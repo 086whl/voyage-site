@@ -8,7 +8,7 @@ import lombok.Data;
  * @date: 2021年11月6日22点28分
  */
 @Data
-class Category {
+public class Category {
     private int cid;//分类id
     private String cname;//分类名称
     /**

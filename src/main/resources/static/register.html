@@ -32,9 +32,12 @@
 			    if(flag){
 			        //用户名合法
                     $("#username").css("border","");
+					$("#tip_un").css("visibility","hidden")
 				}else{
 			        //用户名非法,加一个红色边框
 					$("#username").css("border","1px solid red");
+					//用户名非法，右侧增加文字提示
+					$("#tip_un").css("visibility","visible")
 				}
 			    
                 return flag;
@@ -52,9 +55,12 @@
                 if(flag){
                     //密码合法
                     $("#password").css("border","");
+					$("#tip_pw").css("visibility","hidden")
                 }else{
                     //密码非法,加一个红色边框
                     $("#password").css("border","1px solid red");
+					//密码非法，右侧增加文字提示
+					$("#tip_pw").css("visibility","visible")
                 }
 
                 return flag;
@@ -71,8 +77,11 @@
 				var flag = reg_email.test(email);
 				if(flag){
                     $("#email").css("border","");
+					$("#tip_em").css("visibility","hidden")
 				}else{
                     $("#email").css("border","1px solid red");
+					//邮箱非法，右侧增加文字提示
+					$("#tip_em").css("visibility","visible")
 				}
 
 				return flag;
@@ -137,7 +146,7 @@
     				<form id="registerForm" action="user">
 						<!--提交处理请求的标识符-->
 						<input type="hidden" name="action" value="register">
-    					<table style="margin-top: 25px;">
+    					<table style="margin-top: 25px;width: 500px;">
     						<tr>
     							<td class="td_left">
     								<label for="username">用户名</label>
@@ -145,6 +154,9 @@
     							<td class="td_right">
     								<input type="text" id="username" name="username" placeholder="请输入账号">
     							</td>
+								<td class="td_right">
+									<span id="tip_un" class="td_tip">用户名不小于8位</span>
+								</td>					
     						</tr>
     						<tr>
     							<td class="td_left">
@@ -153,6 +165,9 @@
     							<td class="td_right">
     								<input type="text" id="password" name="password" placeholder="请输入密码">
     							</td>
+								<td class="td_right">
+									<span id="tip_pw" class="td_tip">密码不小于8位</span>
+								</td>	
     						</tr>
     						<tr>
     							<td class="td_left">
@@ -161,6 +176,9 @@
     							<td class="td_right">
     								<input type="text" id="email" name="email" placeholder="请输入Email">
     							</td>
+								<td class="td_right">
+									<span id="tip_em" class="td_tip">请输入正确邮箱格式</span>
+								</td>	
     						</tr>
     						<tr>
     							<td class="td_left">

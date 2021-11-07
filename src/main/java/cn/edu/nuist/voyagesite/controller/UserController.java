@@ -3,6 +3,7 @@ package cn.edu.nuist.voyagesite.controller;
 import cn.edu.nuist.voyagesite.domain.User;
 import cn.edu.nuist.voyagesite.service.UserLoginAndRegister;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
+    @Qualifier("userLoginAndRegisterImpl")
     UserLoginAndRegister userLoginAndRegister;
     /**
      * 登录用户

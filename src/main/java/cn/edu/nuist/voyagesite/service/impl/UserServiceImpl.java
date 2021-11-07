@@ -16,17 +16,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Override
     public boolean regist(User user) {
-        //判断用户是否存在
-
-        if(!userMapper.userNameIsExist(user.getUsername())){
-            //添加注册信息
-            userMapper.regist(user);
-            return true;
-        }else {
-            //用户已存在注册失败
-            return false;
-        }
-
+//        //判断用户是否存在
+//
+//        if(!userMapper.userNameIsExist(user.getUsername())){
+//            //添加注册信息
+//            userMapper.regist(user);
+//            return true;
+//        }else {
+//            //用户已存在注册失败
+//            return false;
+//        }
+        return false;
     }
 
     @Override

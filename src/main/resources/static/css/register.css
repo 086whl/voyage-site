@@ -94,3 +94,8 @@
 .rg_form > .rg_form_right >p >a{
 	color: #fc8989;
 }
+.td_tip{
+	color: red;
+	font-size: 3px;
+	visibility: hidden;
+}

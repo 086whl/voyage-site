@@ -26,6 +26,18 @@ public class User {
     public User() {
     }
 
+    public User(String username, String password, String name, String birthday, String sex, String telephone, String email, String status, String code) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.telephone = telephone;
+        this.email = email;
+        this.status = status;
+        this.code = code;
+    }
+
     /**
      * 有参构方法
      * @param uid

@@ -1,6 +1,7 @@
 package cn.edu.nuist.voyagesite.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @Description: 用户实体类
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date: 2021年11月6日22点33分
  */
 @Data
+@ToString
 public class User {
     private int uid;//用户id
     private String username;//用户名，账号

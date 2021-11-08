@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,8 @@
     <link rel="stylesheet" href="css/search.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/getParameter.js"></script>
-    <script>
+    <script th:inline="javascript">
+
 
         $(function () {
            /* var search = location.search;
@@ -196,7 +198,7 @@
                         '                                <span>'+route.price+'</span>\n' +
                         '                                <span>起</span>\n' +
                         '                            </p>\n' +
-                        '                            <p><a href="route_detail.html?rid='+route.rid+'">查看详情</a></p>\n' +
+                        '                            <p><a href='+route.rid+'"route_detail.html?rid=">查看详情</a></p>\n' +
                         '                        </div>\n' +
                         '                    </li>';
                     route_lis += li;
@@ -231,7 +233,9 @@
                     <li>
                         <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
                         <div class="text1">
-                            <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
+                            <div th:each="route:${routeList}">
+                                <div th:text="${route.rname}"></div>
+                            </div>
                             <br/>
                             <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
                         </div>

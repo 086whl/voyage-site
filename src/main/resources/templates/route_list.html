@@ -233,7 +233,7 @@
                     <div th:each="route:${routeList}">
                     <li>
                         <div class="img">
-                            <img id="image" src="" alt="">
+                            <img th:attr="src=${route.rimage}" style="width: 300px;height: 170px" src="" alt="" >
                         </div>
                         <div class="text1">
                             <div th:text="${route.rname}"></div>

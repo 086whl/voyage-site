@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite;
 
 import cn.edu.nuist.voyagesite.domain.Category;
 import cn.edu.nuist.voyagesite.domain.Route;
+import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.CategoryMapper;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.impl.RouteServiceImpl;
@@ -30,7 +31,7 @@ public class UnitTest {
     }
     @Test
     public void findRouteDetailByRidTest(){
-        Route routeTest = routeMapper.findRouteDetailByRid(1);
-        System.out.println(routeTest.getRname());
+        RouteDetail routeDetail = routeMapper.findRouteDetailByRid(1);
+        System.out.println(routeDetail.getRoute().getRname());
     }
 }

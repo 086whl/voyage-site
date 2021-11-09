@@ -1,6 +1,7 @@
 package cn.edu.nuist.voyagesite.service.impl;
 
 import cn.edu.nuist.voyagesite.domain.Route;
+import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route findRouteDetailByRid(int rid) {
-        Route route=routeMapper.findRouteDetailByRid(rid);
-        return route;
+    public RouteDetail findRouteDetailByRid(int rid) {
+        RouteDetail routeDetail=routeMapper.findRouteDetailByRid(rid);
+        return routeDetail;
     }
 }

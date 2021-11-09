@@ -26,7 +26,7 @@
         <div class="prosum_box">
             <dl class="prosum_left">
                 <dt>
-                    <img alt="" th:attr="src=${routeDetail.rimage}" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
+                    <img alt="" th:attr="src=${routeDetail.route.rimage}" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
                 </dt>
                 <dd id="dd">
                     <a class="up_img up_img_disable"></a>
@@ -61,20 +61,20 @@
                 </dd>
             </dl>
             <div class="prosum_right">
-               <p th:text="${routeDetail.rname}" class="pros_title" id="rname">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
-                <p th:text="${routeDetail.routeIntroduce}" class="hot" id="routeIntroduce">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
+               <p th:text="${routeDetail.route.rname}" class="pros_title" id="rname">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
+                <p th:text="${routeDetail.route.routeIntroduce}" class="hot" id="routeIntroduce">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
                 <div class="pros_other">
-                    <p >经营商家  ：<span id="sname">黑马国旅</span></p>
-                    <p >咨询电话 : <span id="consphone">400-618-9090</span></p>
-                    <p >地址 ： <span id="address">传智播客黑马程序员</span></p>
+                    <p >经营商家  ：<span th:text="${routeDetail.seller.sname}" id="sname">null</span></p>
+                    <p >咨询电话 : <span th:text="${routeDetail.seller.consphone}" id="consphone">000-000-0000</span></p>
+                    <p >地址 ： <span th:text="${routeDetail.seller.address}" id="address">null</span></p>
                 </div>
                 <div class="pros_price">
-                    <p th:text="${routeDetail.price}" class="price"><strong id="price">¥2699.00</strong><span>起</span></p>
+                    <p class="price"><strong th:text="'￥'+${routeDetail.route.price}" id="price">¥2699.00</strong><span>起</span></p>
                     <p class="collect">
                         <a class="btn" id="favorite" onclick="addFavorite();"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
 
                        <!-- <a  class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>-->
-                        <span th:text="已收藏+${routeDetail.count}+次" id="favoriteCount">已收藏100次</span>
+                        <span th:text="已收藏+${routeDetail.route.count}+次" id="favoriteCount">已收藏100次</span>
                     </p>
                 </div>        
             </div>

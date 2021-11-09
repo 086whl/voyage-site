@@ -1,6 +1,7 @@
 package cn.edu.nuist.voyagesite.service;
 
 import cn.edu.nuist.voyagesite.domain.Route;
+import cn.edu.nuist.voyagesite.domain.RouteDetail;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ import java.util.List;
 
 public interface RouteService {
     List<Route> allRouteList();
-    Route findRouteDetailByRid(int rid);
+    RouteDetail findRouteDetailByRid(int rid);
 }

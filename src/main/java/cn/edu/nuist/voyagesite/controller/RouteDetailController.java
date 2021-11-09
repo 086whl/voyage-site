@@ -1,6 +1,7 @@
 package cn.edu.nuist.voyagesite.controller;
 
 import cn.edu.nuist.voyagesite.domain.Route;
+import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class RouteDetailController {
     private RouteService routeService;
     @RequestMapping("/route_detail")
     public String routeDetailParam(Model model,Integer rid){
-        Route routeDetail=routeService.findRouteDetailByRid(rid);
+        RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
         model.addAttribute("routeDetail",routeDetail);
         return "route_detail";
     }

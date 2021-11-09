@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite.mapper;
 
 import cn.edu.nuist.voyagesite.domain.Route;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,5 +13,9 @@ import java.util.List;
  */
 @Mapper
 public interface RouteMapper {
-    List<Route> allRoute();
+    //获取所有路线列表
+    List<Route> allRouteList();
+    //根据路线rid获取路线详情
+    Route findRouteDetailByRid(@Param("rid") int rid);
+
 }

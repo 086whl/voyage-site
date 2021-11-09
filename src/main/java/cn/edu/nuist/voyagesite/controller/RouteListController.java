@@ -1,6 +1,8 @@
 package cn.edu.nuist.voyagesite.controller;
 
+import cn.edu.nuist.voyagesite.domain.PageBean;
 import cn.edu.nuist.voyagesite.domain.Route;
+import cn.edu.nuist.voyagesite.service.PageService;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +23,24 @@ import java.util.List;
 @Controller
 public class RouteListController {
     @Autowired
-    @Qualifier("routeServiceImpl")
-    private RouteService routeService;
+    @Qualifier("pageServiceImpl")
+    private PageService pageService;
     @RequestMapping(value="/route_list")
-    public String routeListParam(Model model){
-        List<Route> routeList=routeService.allRouteList();
-
-        String rName=routeList.get(0).getRname();
-        model.addAttribute("rName", rName);
+    public String routeListParam(Model model,Integer pageNo){
+//        //获取所有路线
+//        List<Route> routeList=routeService.allRouteList();
+////        String rName=routeList.get(0).getRname();
+////        model.addAttribute("rName", rName);
+//        model.addAttribute("routeList",routeList);
+        //获取所有路线
+        int PageSize=10;
+        //获取分页
+        PageBean<Route> pageBean=pageService.findByPager(pageNo,PageSize);
+        //设置当前页
+        pageBean.setCurrentPage(pageNo);
+        List<Route> routeList=pageBean.getList();
         model.addAttribute("routeList",routeList);
+        model.addAttribute("pageBean",pageBean);
         return "route_list";
     }
 }

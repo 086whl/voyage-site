@@ -253,24 +253,25 @@
                 </ul>
                 <div class="page_num_inf">
                     <i></i> 共
-                    <span id="totalPage">12</span>页<span id="totalCount">132</span>条
+                    <span th:text="${pageBean.getTotalPage()}" id="totalPage">12</span>页<span th:text="${pageBean.getTotalCount()}" id="totalCount">132</span>条
+                    当前第<span th:text="${pageBean.getCurrentPage()}"></span>页
                 </div>
                 <div class="pageNum">
                     <ul id="pageNum">
-                        <li><a href="">首页</a></li>
-                        <li class="threeword"><a href="#">上一页</a></li>
-                        <li class="curPage"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
-                        <li class="threeword"><a href="javascript:;">下一页</a></li>
-                        <li class="threeword"><a href="javascript:;">末页</a></li>
+                        <li><a href="route_list?pageNo=1">首页</a></li>
+                        <li th:unless="(${pageBean.getCurrentPage})<=1" class="threeword"><a th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()-1}}" href="#">上一页</a></li>
+                        <li class="curPage"><a th:text="${pageBean.getCurrentPage}" href="#">1</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-${pageBean.getCurrentPage})<=0"><a th:text="${pageBean.getCurrentPage}+1" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+1}}" href="#">2</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+1))<=0"><a th:text="${pageBean.getCurrentPage}+2" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+2}}" href="#">3</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+2))<=0"><a th:text="${pageBean.getCurrentPage}+3" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+3}}" href="#">4</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+3))<=0"><a th:text="${pageBean.getCurrentPage}+4" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+4}}" href="#">5</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+4))<=0"><a th:text="${pageBean.getCurrentPage}+5" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+5}}" href="#">6</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+5))<=0"><a th:text="${pageBean.getCurrentPage}+6" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+6}}" href="#">7</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+6))<=0"><a th:text="${pageBean.getCurrentPage}+7" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+7}}" href="#">8</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+7))<=0"><a th:text="${pageBean.getCurrentPage}+8" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+8}}" href="#">9</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+8))<=0"><a th:text="${pageBean.getCurrentPage}+9" th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+9}}" href="#">10</a></li>
+                        <li th:unless="(${pageBean.getTotalPage}-${pageBean.getCurrentPage})<=0" class="threeword"><a th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+1}}" href="javascript:;">下一页</a></li>
+                        <li class="threeword"><a th:href="@{'route_list?pageNo='+${pageBean.getTotalPage()}}" href="javascript:;">末页</a></li>
                     </ul>
                 </div>
             </div>

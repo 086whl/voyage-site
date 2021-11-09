@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Data
 public class PageBean<T> {
-    private int totalCount;//总记录数
-    private int totalPage;//总页数
+    private long totalCount;//总记录数
+    private long totalPage;//总页数
     private int currentPage;//当前页码
     private int pageSize;//每页显示的条数
 

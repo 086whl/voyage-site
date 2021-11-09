@@ -1,10 +1,13 @@
 package cn.edu.nuist.voyagesite;
 
 import cn.edu.nuist.voyagesite.domain.Category;
+import cn.edu.nuist.voyagesite.domain.PageBean;
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.CategoryMapper;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
+import cn.edu.nuist.voyagesite.service.PageService;
+import cn.edu.nuist.voyagesite.service.impl.PageServiceImpl;
 import cn.edu.nuist.voyagesite.service.impl.RouteServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +36,12 @@ public class UnitTest {
     public void findRouteDetailByRidTest(){
         RouteDetail routeDetail = routeMapper.findRouteDetailByRid(1);
         System.out.println(routeDetail.getRoute().getRname());
+    }
+    @Autowired
+    private PageServiceImpl pageServiceImpl;
+    @Test
+    public void PageTest(){
+        PageBean pageBean=pageServiceImpl.findByPager(1,3);
+        System.out.println(pageBean.getList().toString());
     }
 }

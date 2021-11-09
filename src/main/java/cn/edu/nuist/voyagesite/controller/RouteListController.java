@@ -23,7 +23,7 @@ public class RouteListController {
     @Autowired
     @Qualifier("routeServiceImpl")
     private RouteService routeService;
-    @RequestMapping("/route_list.html")
+    @RequestMapping(value="/route_list")
     public String routeListParam(Model model){
         List<Route> routeList=routeService.allRouteList();
 

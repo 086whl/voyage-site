@@ -19,7 +19,13 @@ public class RouteServiceImpl implements RouteService {
     private RouteMapper routeMapper;
     @Override
     public List<Route> allRouteList() {
-        List<Route> route=routeMapper.allRoute();
+        List<Route> route=routeMapper.allRouteList();
+        return route;
+    }
+
+    @Override
+    public Route findRouteDetailByRid(int rid) {
+        Route route=routeMapper.findRouteDetailByRid(rid);
         return route;
     }
 }

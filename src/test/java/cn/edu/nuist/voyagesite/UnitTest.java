@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class AllCategoryTest {
+public class UnitTest {
     @Autowired
     private CategoryMapper categoryMapper;
     @Test
@@ -25,7 +25,12 @@ public class AllCategoryTest {
     private RouteMapper routeMapper;
     @Test
     public void findAllRoute(){
-        List<Route> routes=routeMapper.allRoute();
+        List<Route> routes=routeMapper.allRouteList();
         System.out.println(routes.get(0).getRname()+"/t"+routes.get(1).getRname());
+    }
+    @Test
+    public void findRouteDetailByRidTest(){
+        Route routeTest = routeMapper.findRouteDetailByRid(1);
+        System.out.println(routeTest.getRname());
     }
 }

@@ -12,4 +12,5 @@ import java.util.List;
 
 public interface RouteService {
     List<Route> allRouteList();
+    Route findRouteDetailByRid(int rid);
 }

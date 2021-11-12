@@ -11,11 +11,6 @@ public class VoyageSiteController {
      * 查询用户
      * @return
      */
-    @RequestMapping("/findUser")
-    public String findUser(){
-        return null;
-    }
-
 
 
     /**查询类别
@@ -55,13 +50,6 @@ public class VoyageSiteController {
         return null;
     }
 
-    /**
-     *
-     * @return
-     */
-    @RequestMapping("/user")
-    public String user(){
-        return null;
-    }
+
 
 }

@@ -15,6 +15,6 @@ public interface UserLoginAndRegister {
      * 注册user
      * @return (注册成功返回true，否则返回false)
      */
-    void register(User user);
+    boolean register(User user) ;
 
 }

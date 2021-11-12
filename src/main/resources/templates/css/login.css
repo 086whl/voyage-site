@@ -4,7 +4,11 @@
     overflow: hidden;
     position: relative;
 }
-
+.submit_btn{
+    width: 300px;
+    height: 150px;
+    color: #5cb85c;
+}
 .login-box {
     width: 360px;
     height: 450px;

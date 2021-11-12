@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -18,40 +18,76 @@
     <!--<script src="js/angular.min.js"></script>-->
     <!--导入jquery-->
     <script src="js/jquery-3.3.1.js"></script>
-
-    <script>
-
-        $(function () {
-            //1.给登录按钮绑定单击事件
-            $("#btn_sub").click(function () {
-
-                //2.发送ajax请求，提交表单数据
-                $.post("user/loginUser", $("#loginForm").serialize(), function (data) {
-                    //data : {flag:false,errorMsg:''}
-                    if (data != 0) {
-                        //登录成功
-                        alert("登录成功，点击确定跳转页面");
-                        location.href = "index.html";
-                    } else {
-                        //登录失败
-                        alert("登陆失败");
-                    }
-                });
-            });
-        });
-
-
-
-        //3.处理响应结果
-
+    <script th:inline="javascript">
+        let tip = [[${msg}]];
+        alert(tip);
 
     </script>
+
 </head>
 
 <body>
 <!--引入头部-->
-<div id="header"></div>
+<div>
+    <div class="top_banner">
+        <img src="images/top_banner.jpg" alt="">
+    </div>
+    <div class="shortcut">
+        <!-- 未登录状态  -->
+        <div id="login_no" class="login_out">
+            <a href="login.html">登录</a>
+            <a href="register.html">注册</a>
+        </div>
+        <!-- 登录状态  -->
+        <div id="login_ok" class="login">
+
+            <span id="span_username" ></span>
+            <a href="myfavorite.html" class="collection">我的收藏</a>
+            <a href="javascript:location.href='exitServlet';">退出</a>
+        </div>
+    </div>
+    <div class="header_wrap">
+        <div class="topbar">
+            <div class="logo">
+                <a href="/"><img src="images/logo.jpg" alt=""></a>
+            </div>
+            <div class="search">
+                <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
+                       autocomplete="off">
+                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
+            </div>
+            <div class="hottel">
+                <div class="hot_pic">
+                    <img src="images/hot_tel.jpg" alt="">
+                </div>
+                <div class="hot_tel">
+                    <p class="hot_time">客服热线(9:00-6:00)</p>
+                    <p class="hot_num">400-618-9090</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 头部 end -->
+
+<!-- 首页导航 -->
+<div class="navitem">
+    <ul id="category" class="nav">
+        <li class="nav-active"><a href="index.html">首页</a></li>
+        <li><a href="route_list?pageNo=1">门票</a></li>
+        <li><a href="route_list.html">酒店</a></li>
+        <li><a href="route_list.html">香港车票</a></li>
+        <li><a href="route_list.html">出境游</a></li>
+        <li><a href="route_list.html">国内游</a></li>
+        <li><a href="route_list.html">港澳游</a></li>
+        <li><a href="route_list.html">抱团定制</a></li>
+        <li><a href="route_list.html">全球自由行</a></li>
+        <li><a href="favoriterank.html">收藏排行榜</a></li>
+    </ul>
+</div>
+<!--首页结束-->
+
+<!--登录-->
 <section id="login_wrap">
     <div class="fullscreen-bg" style="background: url(images/login_bg.png);height: 532px;">
 
@@ -63,27 +99,26 @@
         </div>
         <div class="login_inner">
 
-            <!--登录错误提示消息-->
-            <div id="errorMsg" class="alert alert-danger"></div>
-            <form id="loginForm" action="" method="post" accept-charset="utf-8">
+<!--           登录用户，向后台提交数据-->
+            <form id="loginForm" action="loginUser" method="post" accept-charset="utf-8">
                 <input type="hidden" name="action" value="login"/>
-                <input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="off">
-                <input id="password" name="password" type="text" placeholder="请输入密码" autocomplete="off">
+                <input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="on">
+                <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="on" h>
+                <input id="submit_" type="submit" value="登录" style="width:259.6px;height: 39.6px;background-color: #d6e9c6";>
 
-                <div class="submit_btn">
-                    <button type="button" id="btn_sub">登录</button>
-<!--                    <div class="auto_login">-->
-<!--                        <input type="checkbox" name="" class="checkbox">-->
-<!--                        <span>自动登录</span>-->
-<!--                    </div>-->
-                </div>
+
             </form>
-            <div class="reg" >没有账户？<a href="register.html" onclick="">立即注册</a></div>
+            <div class="reg">没有账户？<a href="register.html" onclick="">立即注册</a></div>
         </div>
     </div>
 </section>
+<!--登录结束-->
+
 <!--引入尾部-->
 <div id="footer"></div>
+
+<!--尾部结束-->
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

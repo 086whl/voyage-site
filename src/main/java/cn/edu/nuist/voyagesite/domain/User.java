@@ -10,6 +10,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
+
 public class User {
     private int uid;//用户id
     private String username;//用户名，账号

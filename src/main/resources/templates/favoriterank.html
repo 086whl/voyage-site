@@ -8,9 +8,10 @@
         <script src="js/jquery-3.3.1.js"></script>
         <script>
             $(function () {
+                let username;
                 $.get("findUser", {}, function (data) {
-                    let username;
-                    if (data != null) {
+
+                    if (data) {
                          username=data.username;
                         $("#span_username").text(username);
                         $("#login_ok").css("display", "inline");

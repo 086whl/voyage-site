@@ -12,6 +12,10 @@ import java.util.List;
  */
 
 public interface RouteService {
+    //获取所有路线列表
     List<Route> allRouteList();
+    //根据路线RID获取路线详情
     RouteDetail findRouteDetailByRid(int rid);
+    //添加收藏
+    void addFavoriteCount(int rid);
 }

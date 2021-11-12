@@ -34,4 +34,7 @@
             <result column="address" property="address"/>
         </association>
     </resultMap>
+    <update id="addFavoriteCount">
+        UPDATE tab_route SET count=count+1 WHERE rid=#{rid}
+    </update>
 </mapper>

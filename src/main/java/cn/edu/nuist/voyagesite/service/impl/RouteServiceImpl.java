@@ -5,6 +5,7 @@ import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +29,10 @@ public class RouteServiceImpl implements RouteService {
     public RouteDetail findRouteDetailByRid(int rid) {
         RouteDetail routeDetail=routeMapper.findRouteDetailByRid(rid);
         return routeDetail;
+    }
+
+    @Override
+    public void addFavoriteCount(int rid) {
+        routeMapper.addFavoriteCount(rid);
     }
 }

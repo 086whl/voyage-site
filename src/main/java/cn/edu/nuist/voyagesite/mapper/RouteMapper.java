@@ -18,5 +18,7 @@ public interface RouteMapper {
     List<Route> allRouteList();
     //根据路线rid获取路线详情
     RouteDetail findRouteDetailByRid(@Param("rid") int rid);
+    //添加收藏
+    void addFavoriteCount(@Param("rid") int rid);
 
 }

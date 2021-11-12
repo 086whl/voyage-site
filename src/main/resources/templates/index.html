@@ -25,9 +25,9 @@
     <!--    <![endif]&ndash;&gt;-->
     <script th:inline="javascript">
         $(function () {
+            let username;
             $.get("findUser", {}, function (data) {
-                let username;
-                if (data != null) {
+                if (data) {
                      username = data.username;
                     $("#span_username").text(username);
                     $("#login_ok").css("display", "inline");

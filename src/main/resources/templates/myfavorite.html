@@ -14,7 +14,32 @@
             margin-bottom: 36px;
            }
        </style>
-       <script src="js/jquery-3.3.1.js"></script>
+       <script src="js/jquery-3.3.1.js">
+           $(function () {
+               let username;
+               $.get("findUser", {}, function (data) {
+
+                   if (data) {
+                       username=data.username;
+                       $("#span_username").text(username);
+                       $("#login_ok").css("display", "inline");
+                       $("#login_no").css("display", "none");
+                   }
+               });
+               //退出功能
+               $("#exit_a").click(function (){
+                   $.post("exitUser",
+                       {
+                           username:username
+                       },
+                       function(data){
+                           $("#login_ok").css("display","none");
+                           $("#login_no").css("display","inline");
+                           alert("退出成功！");
+                       });
+               });
+           });
+       </script>
     </head>
     <body>
     <!--引入头部-->

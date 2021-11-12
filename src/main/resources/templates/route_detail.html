@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>路线详情</title>
@@ -10,9 +10,10 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script>
         $(function () {
+            let username;
             $.get("findUser", {}, function (data) {
-                let username;
-                if (data != null) {
+
+                if (data) {
                      username=data.username;
                     $("#span_username").text(username);
                     $("#login_ok").css("display", "inline");
@@ -206,7 +207,7 @@
 <!--导入布局js，共享header和footer-->
 <script type="text/javascript" src="js/include.js"></script>
 <script src="js/getParameter.js"></script>
-<script>
+<script th:inline="javascript">
     $(document).ready(function () {
 
         //自动播放
@@ -378,24 +379,26 @@
 
     //点击收藏按钮触发的方法
     function addFavorite() {
-        var rid = getParameter("rid");
-        //1. 判断用户是否登录
-        $.get("user/findOne", {}, function (user) {
-            if (user) {
-                //用户登录了
-                //添加功能
-                $.get("route/addFavorite", {rid: rid}, function () {
-
-                    //代码刷新页面
-                    location.reload();
-                });
-
-            } else {
-                //用户没有登录
-                alert("您尚未登录，请登录");
-                location.href = "http://localhost/travel/login.html";
-            }
-        })
+        $.get("addFavoriteCount",{rid:[[${routeDetail.route.rid}]]},);
+        alert("添加成功！");
+        // var rid = getParameter("rid");
+        // //1. 判断用户是否登录
+        // $.get("user/findOne", {}, function (user) {
+        //     if (user) {
+        //         //用户登录了
+        //         //添加功能
+        //         $.get("route/addFavorite", {rid: rid}, function () {
+        //
+        //             //代码刷新页面
+        //             location.reload();
+        //         });
+        //
+        //     } else {
+        //         //用户没有登录
+        //         alert("您尚未登录，请登录");
+        //         location.href = "http://localhost/travel/login.html";
+        //     }
+        // })
     }
 
 

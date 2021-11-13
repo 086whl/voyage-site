@@ -23,88 +23,13 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <!--    <![endif]&ndash;&gt;-->
-    <script th:inline="javascript">
-        $(function () {
-            let username;
-            $.get("findUser", {}, function (data) {
-                if (data) {
-                     username = data.username;
-                    $("#span_username").text(username);
-                    $("#login_ok").css("display", "inline");
-                    $("#login_no").css("display", "none");
-                }
-            });
-            // let username = [[${session.user.username}]];
-            // alert(username + "，欢迎回来");
-            // if (username) {
-            //     $("#span_username").text(username);
-            //     $("#login_ok").css("display","block");
-            //     $("#login_no").css("display","none");
-            // }
-            //退出按钮
-            $("#exit_a").click(function () {
-                $.post("exitUser",
-                    {
-                        username: username
-                    },
-                    function (data) {
-                        $("#login_ok").css("display", "none");
-                        $("#login_no").css("display", "inline");
-                    });
-            });
-        });
-    </script>
-
-
-</head>
+  </head>
 <body>
-<!--引入头部-->
-<!--<div id="header"></div>-->
-<!--头部-->
-<header>
-    <div class="top_banner">
-        <img src="images/top_banner.jpg" alt="">
-    </div>
-    <div class="shortcut">
-        <!-- 未登录状态  -->
-        <div id="login_no" class="login_out">
-            <a href="login.html">登录</a>
-            <a href="register.html">注册</a>
-        </div>
-        <!-- 登录状态  -->
-        <div id="login_ok" class="login">
 
-            <span id="span_username"></span>
-            <a href="myfavorite.html" class="collection">我的收藏</a>
-            <button id="exit_a">退出</button>
-        </div>
-    </div>
-    <div class="header_wrap">
-        <div class="topbar">
-            <div class="logo">
-                <a href="/"><img style="width: 207px;height:56px" src="images/logo.jpg" alt=""></a>
-            </div>
-            <div class="search">
-                <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
-                       autocomplete="off">
-                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
-            </div>
-            <div class="hottel">
-                <div class="hot_pic">
-                    <img src="images/hot_tel.jpg" alt="">
-                </div>
-                <div class="hot_tel">
-                    <p class="hot_time">客服热线(9:00-6:00)</p>
-                    <p class="hot_num">400-618-9090</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- 头部 end -->
+<!--引入头部-->
+<div id="header"></div>
 <!-- 首页导航 -->
 <div id="menu"></div>
-
 <!-- banner start-->
 <section id="banner">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
@@ -439,9 +364,8 @@
 </section>
 <!-- 旅游 end-->
 <!--导入底部-->
-<div id="footer"></div>
+<footer id="footer"></footer>
 <!--尾部-->
-
 </script>
 </body>
 </html>

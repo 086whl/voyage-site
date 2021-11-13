@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,56 +21,59 @@ public class UserController {
     /**
      * 登录用户
      *
-     * @return
+     * @return 返回true，用户存在
      */
     @RequestMapping("loginUser")
-    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, ModelAndView modelAndView, HttpSession httpSession) {
-
-
-       User user = userLoginAndRegister.isExistUser(username, password);
-
-
+    public boolean login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession) {
+        User user = userLoginAndRegister.isExistUser(username, password);
         if (user != null) {
-
-            modelAndView.addObject("user", user);
             httpSession.setAttribute("user", user);
-            modelAndView.addObject("msg", "登录成功");
-            modelAndView.setViewName("index");
+            return true;
         } else {
-
-            modelAndView.addObject("msg", "登录失败，用户名或密码错误请重新输入");
-            modelAndView.setViewName("login");
+            return false;
         }
-        return modelAndView;
     }
 
     /**
      * 注册用户
      *
-     * @return
+     * @return 返回true 注册成功
      */
     @RequestMapping("/registerUser")
     public boolean registerUser(User registerUser) {
-        boolean register = userLoginAndRegister.register(registerUser);
-
-        return register;
+        boolean ifCanUse = userLoginAndRegister.findUsername(registerUser.getUsername());
+//        如果可有返回true，注册用户
+        if (ifCanUse) {
+            boolean register = userLoginAndRegister.register(registerUser);
+        }
+        return ifCanUse;
     }
-
     /**
+     * 查询用户是否登录
      *
+     * @param session
+     * @param model
+     * @return
      */
     @RequestMapping("/findUser")
     public User findUser(HttpSession session, Model model) {
         User user = null;
-        user= (User) session.getAttribute("user");
+        user = (User) session.getAttribute("user");
         return user;
     }
 
+    /**
+     * 退出登录
+     *
+     * @param username
+     * @param httpSession
+     * @return
+     */
     @RequestMapping("exitUser")
     public String exitUser(String username, HttpSession httpSession) {
-        User user = (User) httpSession.getAttribute("username");
-        if(user != null){
-            httpSession.removeAttribute("username");
+        User user = (User) httpSession.getAttribute("user");
+        if (user != null) {
+            httpSession.removeAttribute("user");
         }
         return "exit";
     }

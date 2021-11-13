@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.nuist.voyagesite.mapper.UserMapper">
 
+    <select id="findUsername" resultType="String">
+        select username
+        from tab_user
+        where username = #{username};
+    </select>
     <!--    通过用户名和密码查询用户-->
     <select id="findByUsernameAndPassword" resultType="cn.edu.nuist.voyagesite.domain.User">
         select *

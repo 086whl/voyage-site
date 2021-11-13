@@ -18,9 +18,22 @@
     <!--<script src="js/angular.min.js"></script>-->
     <!--导入jquery-->
     <script src="js/jquery-3.3.1.js"></script>
-    <script th:inline="javascript">
-        let tip = [[${msg}]];
-        alert(tip);
+    <script>
+        $(function () {
+            $("#loginForm").submit(function () {
+                let username = $("#username").val();
+                let password = $("#password").val();
+                $.post("loginUser", {username: username, password: password}, function (data) {
+                    if (data) {
+                        location.href = "index.html";
+                    } else {
+                        alert("用户名密码错误");
+                    }
+                })
+            });
+
+        });
+
 
     </script>
 
@@ -28,7 +41,7 @@
 
 <body>
 <!--引入头部-->
-<div>
+<header>
     <div class="top_banner">
         <img src="images/top_banner.jpg" alt="">
     </div>
@@ -37,13 +50,6 @@
         <div id="login_no" class="login_out">
             <a href="login.html">登录</a>
             <a href="register.html">注册</a>
-        </div>
-        <!-- 登录状态  -->
-        <div id="login_ok" class="login">
-
-            <span id="span_username" ></span>
-            <a href="myfavorite.html" class="collection">我的收藏</a>
-            <a href="javascript:location.href='exitServlet';">退出</a>
         </div>
     </div>
     <div class="header_wrap">
@@ -67,24 +73,11 @@
             </div>
         </div>
     </div>
-</div>
+</header>
 <!-- 头部 end -->
 
 <!-- 首页导航 -->
-<div class="navitem">
-    <ul id="category" class="nav">
-        <li class="nav-active"><a href="index.html">首页</a></li>
-        <li><a href="route_list?pageNo=1">门票</a></li>
-        <li><a href="route_list.html">酒店</a></li>
-        <li><a href="route_list.html">香港车票</a></li>
-        <li><a href="route_list.html">出境游</a></li>
-        <li><a href="route_list.html">国内游</a></li>
-        <li><a href="route_list.html">港澳游</a></li>
-        <li><a href="route_list.html">抱团定制</a></li>
-        <li><a href="route_list.html">全球自由行</a></li>
-        <li><a href="favoriterank.html">收藏排行榜</a></li>
-    </ul>
-</div>
+<div id="menu"></div>
 <!--首页结束-->
 
 <!--登录-->
@@ -99,13 +92,13 @@
         </div>
         <div class="login_inner">
 
-<!--           登录用户，向后台提交数据-->
-            <form id="loginForm" action="loginUser" method="post" accept-charset="utf-8">
+            <!--           登录用户，向后台提交数据-->
+            <form id="loginForm" action="" method="post" accept-charset="utf-8">
                 <input type="hidden" name="action" value="login"/>
                 <input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="on">
-                <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="on" h>
-                <input id="submit_" type="submit" value="登录" style="width:259.6px;height: 39.6px;background-color: #d6e9c6";>
-
+                <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="on">
+                <input id="_submit" type="submit" value="登录"
+                       style="width: 259px;height: 39px;background-color: #d6e9c6">
 
             </form>
             <div class="reg">没有账户？<a href="register.html" onclick="">立即注册</a></div>
@@ -115,7 +108,7 @@
 <!--登录结束-->
 
 <!--引入尾部-->
-<div id="footer"></div>
+<footer id="footer"></footer>
 
 <!--尾部结束-->
 

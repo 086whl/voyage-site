@@ -6,13 +6,27 @@
         from tab_route
     </select>
     <select id="findRouteDetailByRid" resultMap="routeDetail">
-        SELECT DISTINCT
-                        tr.rid,tr.rname,tr.price,tr.routeIntroduce,tr.rflag ,
-                        tr.rdate,tr.isThemeTour,tr.count,tr.cid,tr.rimage,
-                        ts.sid,tr.sourceId,ts.sname,ts.consphone,ts.address
-        FROM tab_route AS tr ,tab_seller AS ts WHERE tr.sid=ts.sid AND tr.rid=#{rid}
+        SELECT DISTINCT tr.rid,
+                        tr.rname,
+                        tr.price,
+                        tr.routeIntroduce,
+                        tr.rflag,
+                        tr.rdate,
+                        tr.isThemeTour,
+                        tr.count,
+                        tr.cid,
+                        tr.rimage,
+                        ts.sid,
+                        tr.sourceId,
+                        ts.sname,
+                        ts.consphone,
+                        ts.address
+        FROM tab_route AS tr,
+             tab_seller AS ts
+        WHERE tr.sid = ts.sid
+          AND tr.rid = #{rid}
     </select>
-    
+
     <resultMap id="routeDetail" type="cn.edu.nuist.voyagesite.domain.RouteDetail">
         <association property="route" javaType="cn.edu.nuist.voyagesite.domain.Route">
             <id column="rid" property="rid"/>
@@ -35,6 +49,8 @@
         </association>
     </resultMap>
     <update id="addFavoriteCount">
-        UPDATE tab_route SET count=count+1 WHERE rid=#{rid}
+        UPDATE tab_route
+        SET count=count + 1
+        WHERE rid = #{rid}
     </update>
 </mapper>

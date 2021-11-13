@@ -1,6 +1,6 @@
 package cn.edu.nuist.voyagesite.service.impl;
 
-import cn.edu.nuist.voyagesite.domain.Favorite;
+import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.mapper.FavoriteMapper;
 import cn.edu.nuist.voyagesite.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ public class FavoriteServiceImpl implements FavoriteService {
     private FavoriteMapper favoriteMapper;
     //根据用户ID查询收藏列表
     @Override
-    public List<Favorite> findFavoriteByUId(int uid) {
+    public List<Route> findFavoriteByUId(int uid) {
 
-        return null;
+        return favoriteMapper.findFavoriteByUId(uid);
     }
     //添加收藏列表
     @Override

@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -37,8 +36,9 @@ public class RouteDetailController {
     @Autowired
     @Qualifier("favoriteServiceImpl")
     private FavoriteService favoriteService;
-    @GetMapping("addFavoriteCount")
-    public String addFavoriteByUId(int rid, HttpSession httpSession){
+    @ResponseBody
+    @GetMapping("/addFavoriteCount/{rid}")
+    public String addFavoriteByUId(@PathVariable int rid, HttpSession httpSession){
         //获取用户UID
         User user= (User) httpSession.getAttribute("user");
         int uid=user.getUid();
@@ -49,6 +49,8 @@ public class RouteDetailController {
         //获取路线RID
         favoriteService.addFavoriteByUid(rid, date, uid);
         routeService.addFavoriteCount(rid);
-        return "index";
+        RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
+        String currentCount= String.valueOf(routeDetail.getRoute().getCount());
+        return currentCount;
     }
 }

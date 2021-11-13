@@ -127,7 +127,10 @@ h1, h2, h3, h4, h5, h6 {
 .hottel {
     float: left;
 }
-
+.logo{
+    width: 207px;
+    height: 56px;
+}
 .logo a {
     display: inline-block;
 }

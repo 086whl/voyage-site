@@ -69,9 +69,9 @@ public class UserController {
 
     @RequestMapping("exitUser")
     public String exitUser(String username, HttpSession httpSession) {
-        User user = (User) httpSession.getAttribute("username");
+        User user = (User) httpSession.getAttribute("user");
         if(user != null){
-            httpSession.removeAttribute("username");
+            httpSession.removeAttribute("user");
         }
         return "exit";
     }

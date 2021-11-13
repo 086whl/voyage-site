@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite.mapper;
 
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
+import cn.edu.nuist.voyagesite.domain.RouteImg;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,5 +21,7 @@ public interface RouteMapper {
     RouteDetail findRouteDetailByRid(@Param("rid") int rid);
     //添加收藏
     void addFavoriteCount(@Param("rid") int rid);
+    //获取图片详情
+    List<RouteImg> findRouteImageByRid(@Param("rid") int rid);
 
 }

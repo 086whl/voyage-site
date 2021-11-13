@@ -97,51 +97,16 @@
         <dl class="prosum_left">
             <dt>
                 <img alt="" th:attr="src=${routeDetail.route.rimage}" class="big_img"
-                     src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
+                     src="">
             </dt>
             <dd id="dd">
                 <a class="up_img up_img_disable"></a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m20920d0669855e745d97f9ad1df966ebb.jpg">
-                </a>
-                <a title="" class="little_img cur_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m29788843d72171643297ccc033d9288ee.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m4531a8dbceefa2c44e6d0e35627cd2689.jpg">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m2531a8dbceefa2c44e6d0e35627cd2689.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m46d8cb900e9f6c0a762aca19eae40c00c.jpg">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m26d8cb900e9f6c0a762aca19eae40c00c.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m45ea00f6eba562a767b5095bbf8cffe07.jpg"
-                   style="display:none;">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m25ea00f6eba562a767b5095bbf8cffe07.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m4265ec488cd1bc7ce749bc8c9b34b87bc.jpg"
-                   style="display:none;">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m2265ec488cd1bc7ce749bc8c9b34b87bc.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m4e7e964909d7dd1a9f6e5494d4dc0c847.jpg"
-                   style="display:none;">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m2e7e964909d7dd1a9f6e5494d4dc0c847.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m467db00e1b76718fab0fe8b96e10f4d35.jpg"
-                   style="display:none;">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m267db00e1b76718fab0fe8b96e10f4d35.jpg">
-                </a>
-                <a title="" class="little_img"
-                   data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m487bbbc6e43eba6aa6a36cc1a182f7a20.jpg"
-                   style="display:none;">
-                    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m287bbbc6e43eba6aa6a36cc1a182f7a20.jpg">
-                </a>
+                <div th:each="routeImg:${routeImgList}">
+                    <a title="" class="little_img" th:attr="data-bigpic=${routeImg.bigPic}"
+                       data-bigpic="">
+                        <img th:attr="src=${routeImg.smallPic}" src="">
+                    </a>
+                </div>
                 <a class="down_img down_img_disable" style="margin-bottom: 0;"></a>
             </dd>
         </dl>
@@ -271,52 +236,7 @@
     }
 
 
-    $(function () {
 
-        //1.获取rid
-        var rid = getParameter("rid");
-
-        //2.发送请求请求 route/findOne
-        $.get("route/findOne", {rid: rid}, function (route) {
-            //3.解析数据填充html
-            $("#rname").html(route.rname);
-            $("#routeIntroduce").html(route.routeIntroduce);
-            $("#price").html("¥" + route.price);
-            $("#sname").html(route.seller.sname);
-            $("#consphone").html(route.seller.consphone);
-            $("#address").html(route.seller.address);
-            //设置收藏次数
-            $("#favoriteCount").html("已收藏" + route.count + "次");
-
-
-            //图片展示
-
-            var ddstr = '<a class="up_img up_img_disable"></a>';
-
-            //遍历routeImgList
-            for (var i = 0; i < route.routeImgList.length; i++) {
-                var astr;
-                if (i >= 4) {
-                    astr = '<a title="" class="little_img" data-bigpic="' + route.routeImgList[i].bigPic + '" style="display:none;">\n' +
-                        '                        <img src="' + route.routeImgList[i].smallPic + '">\n' +
-                        '                    </a>';
-                } else {
-                    astr = '<a title="" class="little_img" data-bigpic="' + route.routeImgList[i].bigPic + '">\n' +
-                        '                        <img src="' + route.routeImgList[i].smallPic + '">\n' +
-                        '                    </a>';
-                }
-
-
-                ddstr += astr;
-            }
-            ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
-
-            $("#dd").html(ddstr);
-
-            //图片展示和切换代码调用
-            goImg();
-        });
-    });
 
 
     $(function () {
@@ -350,9 +270,13 @@
                     async: true,
                     dataType:"text",//返回数据类型
                     success: function(data){
-                        $("#favoriteCount").html("已收藏"+data+"次");
-                        console.log("添加成功！");
-                        alert("添加成功！");
+                        if(data=="isExist"){
+                            alert("已添加，请勿重复添加！");
+                        }else{
+                            $("#favoriteCount").html("已收藏"+data+"次");
+                            console.log("添加成功！");
+                            alert("添加成功！");
+                        }
                     }
                 });
                 // $.get("addFavoriteCount",{rid:[[${routeDetail.route.rid}]]},function(){

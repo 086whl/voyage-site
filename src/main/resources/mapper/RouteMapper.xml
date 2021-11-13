@@ -37,4 +37,8 @@
     <update id="addFavoriteCount">
         UPDATE tab_route SET count=count+1 WHERE rid=#{rid}
     </update>
+
+    <select id="findRouteImageByRid" resultType="cn.edu.nuist.voyagesite.domain.RouteImg">
+        SELECT rgid,rid,bigPic,smallPic FROM tab_route_img WHERE rid=#{rid}
+    </select>
 </mapper>

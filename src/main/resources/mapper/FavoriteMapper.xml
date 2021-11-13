@@ -10,5 +10,8 @@
         INSERT INTO tab_favorite(rid,date,uid) VALUE (#{rid},#{date},#{uid})
     </insert>
 
+    <select id="isExistFavorite" resultType="java.lang.Boolean">
+        SELECT EXISTS(SELECT 1 FROM tab_favorite WHERE rid=#{rid} AND uid=#{uid})
+    </select>
 
 </mapper>

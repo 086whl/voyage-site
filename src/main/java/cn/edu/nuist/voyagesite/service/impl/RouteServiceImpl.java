@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite.service.impl;
 
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
+import cn.edu.nuist.voyagesite.domain.RouteImg;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,11 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public void addFavoriteCount(int rid) {
         routeMapper.addFavoriteCount(rid);
+    }
+
+    @Override
+    public List<RouteImg> findRouteImageByRid(int rid) {
+        List<RouteImg> routeImgList=routeMapper.findRouteImageByRid(rid);
+        return routeImgList;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -24,13 +25,16 @@ public class UserController {
      * @return 返回true，用户存在
      */
     @RequestMapping("loginUser")
-    public boolean login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession) {
+    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession,ModelAndView modelAndView) {
         User user = userLoginAndRegister.isExistUser(username, password);
         if (user != null) {
             httpSession.setAttribute("user", user);
-            return true;
+            modelAndView.setViewName("redirect:index.html");
+            return modelAndView;
         } else {
-            return false;
+            modelAndView.addObject("msg","用户名密码错误");
+            modelAndView.setViewName("login");
+            return modelAndView;
         }
     }
 
@@ -51,13 +55,13 @@ public class UserController {
     /**
      * 查询用户是否登录
      *
-     * @param session
-     * @param model
-     * @return
+     * @param session zzz
+     * @param model zzz
+     * @return zzzz
      */
     @RequestMapping("/findUser")
     public User findUser(HttpSession session, Model model) {
-        User user = null;
+        User user;
         user = (User) session.getAttribute("user");
         return user;
     }
@@ -65,9 +69,9 @@ public class UserController {
     /**
      * 退出登录
      *
-     * @param username
-     * @param httpSession
-     * @return
+     * @param username zzz
+     * @param httpSession zzz
+     * @return zzz
      */
     @RequestMapping("exitUser")
     public String exitUser(String username, HttpSession httpSession) {

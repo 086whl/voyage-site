@@ -18,24 +18,11 @@
     <!--<script src="js/angular.min.js"></script>-->
     <!--导入jquery-->
     <script src="js/jquery-3.3.1.js"></script>
-    <script>
-        $(function () {
-            $("#loginForm").submit(function () {
-                let username = $("#username").val();
-                let password = $("#password").val();
-                $.post("loginUser", {username: username, password: password}, function (data) {
-                    if (data) {
-                        location.href = "index.html";
-                    } else {
-                        alert("用户名密码错误");
-                    }
-                })
-            });
-
-        });
-
-
+    <script th:inline="javascript">
+        let msg = [[${msg}]]
+        alert(msg)
     </script>
+
 
 </head>
 
@@ -93,7 +80,7 @@
         <div class="login_inner">
 
             <!--           登录用户，向后台提交数据-->
-            <form id="loginForm" action="" method="post" accept-charset="utf-8">
+            <form id="loginForm" action="loginUser" method="post">
                 <input type="hidden" name="action" value="login"/>
                 <input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="on">
                 <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="on">

@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite.controller;
 
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
+import cn.edu.nuist.voyagesite.domain.RouteImg;
 import cn.edu.nuist.voyagesite.domain.User;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.FavoriteService;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Description: 路线详情显示
@@ -30,7 +32,9 @@ public class RouteDetailController {
     @RequestMapping("/route_detail")
     public String routeDetailParam(Model model,Integer rid){
         RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
+        List<RouteImg> routeImgList=routeService.findRouteImageByRid(rid);
         model.addAttribute("routeDetail",routeDetail);
+        model.addAttribute("routeImgList",routeImgList);
         return "/route_detail";
     }
     @Autowired
@@ -46,11 +50,16 @@ public class RouteDetailController {
         Date d=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String date=sdf.format(d);
-        //获取路线RID
-        favoriteService.addFavoriteByUid(rid, date, uid);
-        routeService.addFavoriteCount(rid);
-        RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
-        String currentCount= String.valueOf(routeDetail.getRoute().getCount());
-        return currentCount;
+        //判断用户是否已添加收藏
+        if(favoriteService.isExistFavorite(rid,uid)){
+            return "isExist";
+        }else {
+            favoriteService.addFavoriteByUid(rid, date, uid);
+            routeService.addFavoriteCount(rid);
+            RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
+            String currentCount= String.valueOf(routeDetail.getRoute().getCount());
+            return currentCount;
+        }
+
     }
 }

@@ -2,6 +2,7 @@ package cn.edu.nuist.voyagesite.service;
 
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
+import cn.edu.nuist.voyagesite.domain.RouteImg;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface RouteService {
     RouteDetail findRouteDetailByRid(int rid);
     //添加收藏
     void addFavoriteCount(int rid);
+    //获取图片详情
+    List<RouteImg> findRouteImageByRid(int rid);
 }

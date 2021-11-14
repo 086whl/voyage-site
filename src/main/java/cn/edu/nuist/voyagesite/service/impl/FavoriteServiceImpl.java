@@ -19,13 +19,20 @@ public class FavoriteServiceImpl implements FavoriteService {
     private FavoriteMapper favoriteMapper;
     //根据用户ID查询收藏列表
     @Override
-    public List<Route> findFavoriteByUId(int uid) {
 
-        return favoriteMapper.findFavoriteByUId(uid);
+    public List<Route> findFavoriteByUId(int uid) {
+        List<Route> allFavorite=favoriteMapper.findFavoriteByUId(uid);
+        return allFavorite;
     }
     //添加收藏列表
     @Override
     public void addFavoriteByUid(int rid,String date,int uid) {
         favoriteMapper.addFavoriteByUId(rid, date, uid);
+    }
+    //根据RID与UID查询记录是否存在
+    @Override
+    public boolean isExistFavorite(int rid, int uid) {
+        Boolean isExist=favoriteMapper.isExistFavorite(rid,uid);
+        return isExist;
     }
 }

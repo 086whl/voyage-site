@@ -22,4 +22,7 @@ public interface FavoriteMapper {
     //添加收藏列表
     void addFavoriteByUId(@Param("rid") int rid,@Param("date") String date,@Param("uid") int uid);
 
+    //根据RID与UID查询记录是否存在
+    Boolean isExistFavorite(@Param("rid") int rid,@Param("uid") int uid);
+
 }

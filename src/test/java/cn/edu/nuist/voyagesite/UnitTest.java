@@ -7,6 +7,7 @@ import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.CategoryMapper;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.PageService;
+import cn.edu.nuist.voyagesite.service.impl.FavoriteServiceImpl;
 import cn.edu.nuist.voyagesite.service.impl.PageServiceImpl;
 import cn.edu.nuist.voyagesite.service.impl.RouteServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,11 @@ public class UnitTest {
     public void PageTest(){
         PageBean pageBean=pageServiceImpl.findByPager(1,3);
         System.out.println(pageBean.getList().toString());
+    }
+    @Autowired
+    private FavoriteServiceImpl favoriteService;
+    @Test
+    public void isExist(){
+        System.out.println(favoriteService.isExistFavorite(4,10));
     }
 }

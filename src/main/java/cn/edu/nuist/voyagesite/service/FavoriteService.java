@@ -14,4 +14,6 @@ public interface FavoriteService {
     public List<Route> findFavoriteByUId(int uid);
     //添加收藏列表
     public void addFavoriteByUid(int rid,String date,int uid);
+    //根据RID与UID查询记录是否存在
+    public boolean isExistFavorite(int rid,int uid);
 }

@@ -28,18 +28,20 @@
             var username = $("#username").val();
             //2.定义正则
             var reg_username = /^\w{8,20}$/;
-            //3.判断，给出提示信息
+            //3.判断是否匹配正则，给出提示信息
             var flag = reg_username.test(username);
             if (flag) {
-                //用户名合法
+
+                //可以使用
                 $("#username").css("border", "");
                 $("#tip_un").css("visibility", "hidden")
 
             } else {
+
                 //用户名非法,加一个红色边框
                 $("#username").css("border", "1px solid red");
                 //用户名非法，右侧增加文字提示
-                $("#tip_un").css("visibility", "visible")
+                $("#tip_un").css("visibility", "visible");
             }
 
             return flag;
@@ -100,15 +102,12 @@
 
                     $.post("registerUser", $(this).serialize(), function (data) {
                         //处理服务器响应的数据  data  {flag:true,errorMsg:"注册失败"}
-
                         if (data) {
                             //注册成功，跳转成功页面
-
                             location.href = "register_ok.html";
                         } else {
                             //注册失败,给errorMsg添加提示信息
                             alert("用户名重复，请重新注册");
-                            // $("#errorMsg").html(data.errorMsg);
 
                         }
                     });
@@ -123,75 +122,16 @@
             $("#username").blur(checkUsername);
             $("#password").blur(checkPassword);
             $("#email").blur(checkEmail);
-
-
         });
-
-
     </script>
-
-
 </head>
-<body>
-<!--引入头部-->
-<!--	<div id="header"></div>-->
-<div >
-    <div class="top_banner">
-        <img src="images/top_banner.jpg" alt="">
-    </div>
-    <div class="shortcut">
-        <!-- 未登录状态  -->
-        <div id="login_no" class="login_out">
-            <a href="login.html">登录</a>
-            <a href="register.html">注册</a>
-        </div>
-        <!-- 登录状态  -->
-        <div id="login_ok" class="login">
 
-            <span id="span_username" th:text="${session.user.username}"></span>
-            <a href="myfavorite.html" class="collection">我的收藏</a>
-            <a href="javascript:location.href='exitServlet';">退出</a>
-        </div>
-    </div>
-    <div class="header_wrap">
-        <div class="topbar">
-            <div class="logo">
-                <a href="/"><img style="width: 207px;height:56px" src="images/logo.jpg" alt=""></a>
-            </div>
-            <div class="search">
-                <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
-                       autocomplete="off">
-                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
-            </div>
-            <div class="hottel">
-                <div class="hot_pic">
-                    <img src="images/hot_tel.jpg" alt="">
-                </div>
-                <div class="hot_tel">
-                    <p class="hot_time">客服热线(9:00-6:00)</p>
-                    <p class="hot_num">400-618-9090</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 头部 end -->
+<body>
+<!--头部-->
+
 <!-- 首页导航 -->
-<div class="navitem">
-    <ul id="category" class="nav">
-        <li class="nav-active"><a href="index.html">首页</a></li>
-        <li><a href="route_list?pageNo=1">门票</a></li>
-        <li><a href="route_list.html">酒店</a></li>
-        <li><a href="route_list.html">香港车票</a></li>
-        <li><a href="route_list.html">出境游</a></li>
-        <li><a href="route_list.html">国内游</a></li>
-        <li><a href="route_list.html">港澳游</a></li>
-        <li><a href="route_list.html">抱团定制</a></li>
-        <li><a href="route_list.html">全球自由行</a></li>
-        <li><a href="favoriterank.html">收藏排行榜</a></li>
-    </ul>
-</div>
-<!-- 头部 end -->
+<!--<div id="menu"></div>-->
+<!--注册主体-->
 <div class="rg_layout">
     <div class="rg_form clearfix">
         <div class="rg_form_left">
@@ -292,9 +232,9 @@
     </div>
 </div>
 <!--引入尾部-->
-<div id="footer"></div>
+<footer id="footer"></footer>
 <!--		导入布局js，共享header和footer-->
 <script type="text/javascript" src="js/include.js"></script>
-
 </body>
+
 </html>

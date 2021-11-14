@@ -17,4 +17,6 @@ public interface UserLoginAndRegister {
      */
     boolean register(User user) ;
 
+    boolean findUsername(String username);
+
 }

@@ -19,6 +19,7 @@ import java.util.List;
 @Service
 public class RouteServiceImpl implements RouteService {
     @Autowired
+    @Qualifier("routeMapper")
     private RouteMapper routeMapper;
     @Override
     public List<Route> allRouteList() {

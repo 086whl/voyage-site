@@ -3,8 +3,6 @@ package cn.edu.nuist.voyagesite.mapper;
 import cn.edu.nuist.voyagesite.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.sql.SQLException;
-
 @Mapper
 public interface UserMapper {
 
@@ -13,4 +11,5 @@ public interface UserMapper {
     User findByUsernameAndPassword(String username, String password);
 
 
+    String findUsername(String username);
 }

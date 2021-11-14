@@ -6,7 +6,6 @@ import cn.edu.nuist.voyagesite.service.UserLoginAndRegister;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.SQLException;
 
 @Service
 public class UserLoginAndRegisterImpl implements UserLoginAndRegister {
@@ -24,5 +23,21 @@ public class UserLoginAndRegisterImpl implements UserLoginAndRegister {
     @Override
     public boolean register(User user) {
         return userMapper.save(user);
+    }
+
+    /**
+     * 返回ture表示可以使用该名字
+     * @param username 注册的名字
+     * @return
+     */
+    @Override
+    public boolean findUsername(String username) {
+        String username1 = userMapper.findUsername(username);
+        if (username1 != null){
+        return false;
+        }
+        else {
+            return true;
+        }
     }
 }

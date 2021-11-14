@@ -1,6 +1,6 @@
 package cn.edu.nuist.voyagesite.service;
 
-import cn.edu.nuist.voyagesite.domain.Favorite;
+import cn.edu.nuist.voyagesite.domain.Route;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface FavoriteService {
     //根据用户ID查询收藏列表
-    public List<Favorite> findFavoriteByUId(int uid);
+    public List<Route> findFavoriteByUId(int uid);
     //添加收藏列表
     public void addFavoriteByUid(int rid,String date,int uid);
     //根据RID与UID查询记录是否存在

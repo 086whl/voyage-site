@@ -29,7 +29,7 @@ public class UserController {
         User user = userLoginAndRegister.isExistUser(username, password);
         if (user != null) {
             httpSession.setAttribute("user", user);
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("redirect:index.html");
             return modelAndView;
         } else {
             modelAndView.addObject("msg","用户名密码错误");
@@ -55,13 +55,13 @@ public class UserController {
     /**
      * 查询用户是否登录
      *
-     * @param session
-     * @param model
-     * @return
+     * @param session zzz
+     * @param model zzz
+     * @return zzzz
      */
     @RequestMapping("/findUser")
     public User findUser(HttpSession session, Model model) {
-        User user = null;
+        User user;
         user = (User) session.getAttribute("user");
         return user;
     }
@@ -69,9 +69,9 @@ public class UserController {
     /**
      * 退出登录
      *
-     * @param username
-     * @param httpSession
-     * @return
+     * @param username zzz
+     * @param httpSession zzz
+     * @return zzz
      */
     @RequestMapping("exitUser")
     public String exitUser(String username, HttpSession httpSession) {

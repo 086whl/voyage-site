@@ -10,6 +10,7 @@ import cn.edu.nuist.voyagesite.service.PageService;
 import cn.edu.nuist.voyagesite.service.impl.FavoriteServiceImpl;
 import cn.edu.nuist.voyagesite.service.impl.PageServiceImpl;
 import cn.edu.nuist.voyagesite.service.impl.RouteServiceImpl;
+import cn.edu.nuist.voyagesite.service.impl.SearchServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -50,5 +51,13 @@ public class UnitTest {
     @Test
     public void isExist(){
         System.out.println(favoriteService.isExistFavorite(4,10));
+    }
+
+    @Autowired
+    private SearchServiceImpl searchService;
+    @Test
+    public void fuzzySearchTest(){
+        List<Route> resultList=searchService.fuzzySearch("官网");
+        System.out.println(resultList.get(0));
     }
 }

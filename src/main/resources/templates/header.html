@@ -1,5 +1,10 @@
 <script>
     $(function () {
+        //搜索按钮
+        $("#search-button").click(function (){
+            let rname=$("#search_input").val();
+            window.location.href = "/mysearchresult?rname="+rname+"";
+        });
         //判断用户是否登录
         let username;
         let uid;
@@ -56,7 +61,7 @@
             <div class="search">
                 <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
                        autocomplete="off">
-                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
+                <a href="#" id="search-button" class="search-button">搜索</a>
             </div>
             <div class="hottel">
                 <div class="hot_pic">

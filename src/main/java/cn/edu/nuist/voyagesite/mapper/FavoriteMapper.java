@@ -25,4 +25,5 @@ public interface FavoriteMapper {
     //根据RID与UID查询记录是否存在
     Boolean isExistFavorite(@Param("rid") int rid,@Param("uid") int uid);
 
+    void removeMyroute(int rid, int uid);
 }

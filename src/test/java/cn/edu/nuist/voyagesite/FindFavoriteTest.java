@@ -16,6 +16,7 @@ public class FindFavoriteTest {
     public void findTest(){
         List<Route> favoriteByUId = favoriteMapper.findFavoriteByUId(1);
         System.out.println("favoriteByUId = " + favoriteByUId);
+        favoriteMapper.removeMyroute(1,1);
 
 
     }

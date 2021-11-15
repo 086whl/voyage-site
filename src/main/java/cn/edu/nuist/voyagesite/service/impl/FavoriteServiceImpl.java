@@ -35,4 +35,9 @@ public class FavoriteServiceImpl implements FavoriteService {
         Boolean isExist=favoriteMapper.isExistFavorite(rid,uid);
         return isExist;
     }
+
+    @Override
+    public void removeMyroute(int rid, int uid) {
+        favoriteMapper.removeMyroute(rid,uid);
+    }
 }

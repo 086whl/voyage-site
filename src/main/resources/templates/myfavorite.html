@@ -18,7 +18,6 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script th:inline="javascript">
         $(function () {
-            //判断用户是否登录
             let username;
             let uid;
             $.get("findUser", {}, function (data) {
@@ -84,14 +83,16 @@
                     <!--                    tr th:each="prod : ${prods}">-->
                     <div class="row">
                         <div class="col-md-3" th:each="route: ${favouriteRoutes}">
-                            <a th:attr="href='route_detail?rid='+${route.rid}" href="route_detail.html">
-                                <img th:src="${route.rimage}" alt="">
-                                <div class="has_border">
+                            <img th:src="${route.rimage}" alt="">
+                            <div class="has_border">
+                                <a th:attr="href='route_detail?rid='+${route.rid}" href="route_detail.html">
                                     <h3 th:text="${route.rname}">上海直飞三亚5天4晚自由行(春节预售+亲子/蜜月/休闲游首选+豪华酒店任选+接送机)</h3>
-                                    <div class="price">网付价<em>￥</em><strong
-                                            th:text="${route.price}">889</strong><em>起</em></div>
+                                </a>
+                                <div class="price">网付价<em>￥</em><strong th:text="${route.price}">889</strong><em>起</em>
+                                    <a th:attr="href='removeMyroute?rid='+${route.rid}">删除</a>
                                 </div>
-                            </a>
+                            </div>
+
                         </div>
 
                     </div>

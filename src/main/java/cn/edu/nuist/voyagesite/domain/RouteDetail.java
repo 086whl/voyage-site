@@ -8,9 +8,9 @@ import lombok.Data;
  */
 @Data
 public class RouteDetail {
-    private Route route;
-    private Seller seller;
-
+    private Route route;        //路线
+    private Seller seller;      //销售方
+    private Category category;  //分类
     public RouteDetail() {
     }
 

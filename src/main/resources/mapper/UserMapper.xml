@@ -12,7 +12,7 @@
         select *
         from tab_user
         where username = #{username}
-          and password = #{password};
+          and password = #{pwMd5};
     </select>
     <!--    插入新用户-->
     <insert id="save" parameterType="cn.edu.nuist.voyagesite.domain.User">

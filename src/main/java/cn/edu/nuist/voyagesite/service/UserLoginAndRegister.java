@@ -9,13 +9,13 @@ public interface UserLoginAndRegister {
      * @param username 用户名
      * @param password  密码
      */
-    User isExistUser(String username,String password);
+    User isExistUser(String username,String password) throws Exception;
 
     /**
      * 注册user
      * @return (注册成功返回true，否则返回false)
      */
-    boolean register(User user) ;
+    boolean register(User user) throws Exception;
 
     boolean findUsername(String username);
 

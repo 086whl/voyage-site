@@ -3,6 +3,7 @@ package cn.edu.nuist.voyagesite.service.impl;
 import cn.edu.nuist.voyagesite.domain.User;
 import cn.edu.nuist.voyagesite.mapper.UserMapper;
 import cn.edu.nuist.voyagesite.service.UserLoginAndRegister;
+import cn.edu.nuist.voyagesite.util.Md5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,15 +14,22 @@ public class UserLoginAndRegisterImpl implements UserLoginAndRegister {
     private UserMapper userMapper;
 
     @Override
-    public User isExistUser(String username, String password) {
-
-        User userMapperByUsernameAndPassword = userMapper.findByUsernameAndPassword(username, password);
+    public User isExistUser(String username, String password) throws Exception {
+        //用户密码MD5加密
+        String pwMd5= Md5Util.encodeByMd5(password);
+        User userMapperByUsernameAndPassword = userMapper.findByUsernameAndPassword(username, pwMd5);
 
         return userMapperByUsernameAndPassword;
     }
 
     @Override
-    public boolean register(User user) {
+    public boolean register(User user) throws Exception {
+        //用户密码MD5加密
+        //获取用户明文密码
+        String pw=user.getPassword();
+        //加密
+        String pwMd5= Md5Util.encodeByMd5(pw);
+        user.setPassword(pwMd5);
         return userMapper.save(user);
     }
 

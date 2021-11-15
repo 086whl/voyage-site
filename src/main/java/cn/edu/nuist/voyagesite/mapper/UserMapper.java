@@ -8,7 +8,7 @@ public interface UserMapper {
 
     boolean save(User user) ;
 
-    User findByUsernameAndPassword(String username, String password);
+    User findByUsernameAndPassword(String username, String pwMd5);
 
 
     String findUsername(String username);

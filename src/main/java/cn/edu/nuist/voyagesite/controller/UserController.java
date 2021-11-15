@@ -2,10 +2,10 @@ package cn.edu.nuist.voyagesite.controller;
 
 import cn.edu.nuist.voyagesite.domain.User;
 import cn.edu.nuist.voyagesite.service.UserLoginAndRegister;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +25,9 @@ public class UserController {
      *
      * @return 返回true，用户存在
      */
+    @SneakyThrows
     @RequestMapping("loginUser")
-    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession,ModelAndView modelAndView) {
+    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession,ModelAndView modelAndView) throws Exception {
         User user = userLoginAndRegister.isExistUser(username, password);
         if (user != null) {
             httpSession.setAttribute("user", user);
@@ -45,7 +46,7 @@ public class UserController {
      * @return 返回true 注册成功
      */
     @RequestMapping("/registerUser")
-    public boolean registerUser(User registerUser) {
+    public boolean registerUser(User registerUser) throws Exception {
         boolean ifCanUse = userLoginAndRegister.findUsername(registerUser.getUsername());
 //        如果可有返回true，注册用户
         if (ifCanUse) {

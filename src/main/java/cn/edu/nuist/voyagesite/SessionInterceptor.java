@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 public class SessionInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //拦截登录页面
         if(request.getRequestURI().equals("/login.html")){
+            //通过session内容判断用户是否已登录
             Object obj=request.getSession().getAttribute("user");
             if(obj!=null){
                 response.setContentType("text/html; charset=UTF-8");

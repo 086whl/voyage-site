@@ -94,7 +94,10 @@
         $(function () {
             //当表单提交时，调用所有的校验方法
             $("#registerForm").submit(function () {
-
+                var birthday=$("#birthday").val()
+                if(birthday==" "){
+                    birthday=null;
+                }
                 //1.发送数据到服务器
                 if (checkUsername() && checkPassword() && checkEmail()) {
 

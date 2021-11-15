@@ -13,6 +13,12 @@ import java.util.Map;
  */
 @Mapper
 public interface PageMapper {
+    //对所有路线列表进行分页
     List<Route> findByPage(Map<String, Object> params);
+    //所有路线总数
     long count();
+    //路线分类后的列表进行分页
+    List<Route> routeListByCidPage(Map<String,Object> params);
+    //按路线分类统计总数
+    long contByCid(int cId);
 }

@@ -59,41 +59,41 @@
                 </div>
                 <div class="pageNum">
                     <ul id="pageNum">
-                        <li><a href="route_list?pageNo=1">首页</a></li>
+                        <li><a th:href="@{'route_list?cId='+${cId}+'&pageNo=1'}" href="#">首页</a></li>
                         <li th:unless="(${pageBean.getCurrentPage})<=1" class="threeword"><a
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()-1}}" href="#">上一页</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()-1}}" href="#">上一页</a></li>
                         <li class="curPage"><a th:text="${pageBean.getCurrentPage}" href="#">1</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-${pageBean.getCurrentPage})<=0"><a
                                 th:text="${pageBean.getCurrentPage}+1"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+1}}" href="#">2</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+1}}" href="#">2</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+1))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+2"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+2}}" href="#">3</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+2}}" href="#">3</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+2))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+3"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+3}}" href="#">4</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+3}}" href="#">4</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+3))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+4"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+4}}" href="#">5</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+4}}" href="#">5</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+4))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+5"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+5}}" href="#">6</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+5}}" href="#">6</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+5))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+6"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+6}}" href="#">7</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+6}}" href="#">7</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+6))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+7"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+7}}" href="#">8</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+7}}" href="#">8</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+7))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+8"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+8}}" href="#">9</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+8}}" href="#">9</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-(${pageBean.getCurrentPage}+8))<=0"><a
                                 th:text="${pageBean.getCurrentPage}+9"
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+9}}" href="#">10</a></li>
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+9}}" href="#">10</a></li>
                         <li th:unless="(${pageBean.getTotalPage}-${pageBean.getCurrentPage})<=0" class="threeword"><a
-                                th:href="@{'route_list?pageNo='+${pageBean.getCurrentPage()+1}}"
+                                th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getCurrentPage()+1}}"
                                 href="javascript:;">下一页</a></li>
-                        <li class="threeword"><a th:href="@{'route_list?pageNo='+${pageBean.getTotalPage()}}"
+                        <li class="threeword"><a th:href="@{'route_list?cId='+${cId}+'&pageNo='+${pageBean.getTotalPage()}}"
                                                  href="javascript:;">末页</a></li>
                     </ul>
                 </div>

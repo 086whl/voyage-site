@@ -34,4 +34,21 @@ public class PageServiceImpl implements PageService {
         pageBean.setTotalPage((pageBean.getTotalCount()/10)+1);
         return pageBean;
     }
+
+    @Override
+    public PageBean<Route> routeListByCidPage(Integer cId, Integer page, Integer size) {
+        //分页Mapper入参，传递起始页与页面大小
+        Map<String, Object> params=new HashMap<String, Object>();
+        params.put("page",(page-1)*size);
+        params.put("size",size);
+        params.put("cId",cId);
+        //获取分页后路线集合
+        List<Route> list=pageMapper.routeListByCidPage(params);
+        //封装
+        PageBean<Route> pageBean=new PageBean<Route>();
+        pageBean.setList(list);
+        pageBean.setTotalCount(pageMapper.contByCid(cId));
+        pageBean.setTotalPage((pageBean.getTotalCount()/10)+1);
+        return pageBean;
+    }
 }

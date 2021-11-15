@@ -26,7 +26,7 @@ public class RouteListController {
     @Qualifier("pageServiceImpl")
     private PageService pageService;
     @RequestMapping(value="/route_list")
-    public String routeListParam(Model model,Integer pageNo){
+    public String routeListParam(Model model,Integer cId,Integer pageNo){
 //        //获取所有路线
 //        List<Route> routeList=routeService.allRouteList();
 ////        String rName=routeList.get(0).getRname();
@@ -35,12 +35,13 @@ public class RouteListController {
         //获取所有路线
         int PageSize=10;
         //获取分页
-        PageBean<Route> pageBean=pageService.findByPager(pageNo,PageSize);
+        PageBean<Route> pageBean=pageService.routeListByCidPage(cId,pageNo,PageSize);
         //设置当前页
         pageBean.setCurrentPage(pageNo);
         List<Route> routeList=pageBean.getList();
         model.addAttribute("routeList",routeList);
         model.addAttribute("pageBean",pageBean);
+        model.addAttribute("cId",cId);
         return "route_list";
     }
 }

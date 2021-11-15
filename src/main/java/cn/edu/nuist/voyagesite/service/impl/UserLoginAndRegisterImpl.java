@@ -30,6 +30,10 @@ public class UserLoginAndRegisterImpl implements UserLoginAndRegister {
         //加密
         String pwMd5= Md5Util.encodeByMd5(pw);
         user.setPassword(pwMd5);
+        //判断用户是否填写生日信息
+        if(user.getBirthday().equals("")){
+            user.setBirthday(null);
+        }
         return userMapper.save(user);
     }
 

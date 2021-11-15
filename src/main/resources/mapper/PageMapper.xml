@@ -9,4 +9,13 @@
     <select id="count" resultType="long">
         SELECT DISTINCT COUNT(rid) FROM tab_route
     </select>
+    <select id="routeListByCidPage" resultType="cn.edu.nuist.voyagesite.domain.Route">
+        SELECT *
+        FROM tab_route
+        WHERE cid=#{cId}
+        LIMIT #{page},#{size}
+    </select>
+    <select id="contByCid" resultType="long">
+        SELECT DISTINCT COUNT(rid) FROM tab_route WHERE cid=#{cId}
+    </select>
 </mapper>

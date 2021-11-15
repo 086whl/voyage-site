@@ -21,8 +21,8 @@
     <div class="bread_box">
         <a href="/">首页</a>
         <span> &gt;</span>
-        <a href="#">国内游</a><span> &gt;</span>
-        <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+        <a th:text="${routeDetail.category.cname}" th:href="@{'/route_list?cId='+${routeDetail.category.cid}+'&pageNo=1'}" href="#">国内游</a><span> &gt;</span>
+        <a th:text="${routeDetail.route.rname}" href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
     </div>
     <div class="prosum_box">
         <dl class="prosum_left">

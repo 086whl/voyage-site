@@ -21,8 +21,8 @@
     <div class="bread_box">
         <a href="/">首页</a>
         <span> &gt;</span>
-        <a href="#">国内游</a><span> &gt;</span>
-        <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+        <a th:text="${routeDetail.category.cname}" th:href="@{'/route_list?cId='+${routeDetail.category.cid}+'&pageNo=1'}" href="#">国内游</a><span> &gt;</span>
+        <a th:text="${routeDetail.route.rname}" href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
     </div>
     <div class="prosum_box">
         <dl class="prosum_left">
@@ -171,8 +171,7 @@
 
     $(function () {
         // 发送请求，判断用户是否收藏过该线路
-        var rid = getParameter("rid");
-        $.get("route/isFavorite", {rid: rid}, function (flag) {
+        $.get("isExistFavorite", {rid:[[${routeDetail.route.rid}]],uid: [[${uid}]]}, function (flag) {
             if (flag) {
                 // 用户已经收藏过
                 //<a  class="btn already" disabled="disabled">
@@ -182,6 +181,7 @@
 
                 //删除按钮的点击事件
                 $("#favorite").removeAttr("onclick");
+
             } else {
                 // 用户没有收藏
             }
@@ -205,7 +205,10 @@
                             alert("已添加，请勿重复添加！");
                         }else{
                             $("#favoriteCount").html("已收藏"+data+"次");
-                            console.log("添加成功！");
+                            $("#favorite").addClass("already");
+                            $("#favorite").attr("disabled", "disabled");
+                            //删除按钮的点击事件
+                            $("#favorite").removeAttr("onclick");
                             alert("添加成功！");
                         }
                     }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -27,6 +29,16 @@ public class MyFavoriteController {
         model.addAttribute("favouriteRoutes", favoriteByUId);
 
         return "myfavorite";
+    }
+    //判断用户是否已收藏
+    @ResponseBody
+    @RequestMapping("/isExistFavorite")
+    public Boolean isExistFavorite(Integer rid,Integer uid){
+        boolean flag=favoriteService.isExistFavorite(rid,uid);
+        if(flag){
+            return true;
+        }
+        return false;
     }
 
     //    删除收藏的路线

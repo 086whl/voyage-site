@@ -30,11 +30,19 @@ public class RouteDetailController {
     @Qualifier("routeServiceImpl")
     private RouteService routeService;
     @RequestMapping("/route_detail")
-    public String routeDetailParam(Model model,Integer rid){
+    public String routeDetailParam(Model model,Integer rid,HttpSession httpSession){
+        //获取用户UID
+        int uid=0;
+        User user= (User) httpSession.getAttribute("user");
+        //判断用户是否已登录
+        if (user!=null){
+            uid=user.getUid();
+        }
         RouteDetail routeDetail=routeService.findRouteDetailByRid(rid);
         List<RouteImg> routeImgList=routeService.findRouteImageByRid(rid);
         model.addAttribute("routeDetail",routeDetail);
         model.addAttribute("routeImgList",routeImgList);
+        model.addAttribute("uid",uid);
         return "/route_detail";
     }
     @Autowired

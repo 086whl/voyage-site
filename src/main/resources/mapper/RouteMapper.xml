@@ -20,11 +20,14 @@
                         tr.sourceId,
                         ts.sname,
                         ts.consphone,
-                        ts.address
+                        ts.address,
+                        tc.cname
         FROM tab_route AS tr,
-             tab_seller AS ts
+             tab_seller AS ts,
+             tab_category AS tc
         WHERE tr.sid = ts.sid
           AND tr.rid = #{rid}
+          AND tr.cid=tc.cid
     </select>
 
     <resultMap id="routeDetail" type="cn.edu.nuist.voyagesite.domain.RouteDetail">
@@ -37,7 +40,6 @@
             <result column="rdate" property="rdate"/>
             <result column="isThemeTour" property="isThemeTour"/>
             <result column="count" property="count"/>
-            <result column="cid" property="cid"/>
             <result column="rimage" property="rimage"/>
             <result column="sourceId" property="sourceId"/>
         </association>
@@ -46,6 +48,10 @@
             <result column="sname" property="sname"/>
             <result column="consphone" property="consphone"/>
             <result column="address" property="address"/>
+        </association>
+        <association property="category" javaType="cn.edu.nuist.voyagesite.domain.Category">
+            <id column="cid" property="cid"/>
+            <result column="cname" property="cname"/>
         </association>
     </resultMap>
     <update id="addFavoriteCount">

@@ -77,32 +77,18 @@
             elem: '#currentTableId',
             url: 'http://localhost:8080/all_route_list',
             toolbar: '#toolbarDemo',
-            // defaultToolbar: ['filter', 'exports', 'print', {
-            //     title: '提示',
-            //     layEvent: 'LAYTABLE_TIPS',
-            //     icon: 'layui-icon-tips'
-            // }],
-            parseData:function (res){
-              return{
-                  "code":0,
-                  "msg":"",
-                  "count":1000,
-                  "data":res
-              }
-            },
             cols: [[
                 {type: "checkbox", width: 50},
+                {field: 'rid', width: 80, title: 'rid', sort: true},
+                {field: 'rname', width: 80, title: '路线名'},
+                {field: 'routeIntroduce', width: 135, title: 'routeIntroduce', sort: true},
                 {field: 'cid', width: 80, title: 'cID', sort: true},
                 {field: 'count', width: 80, title: '收藏总数'},
                 {field: 'price', width: 80, title: '价格', sort: true},
                 {field: 'city', width: 80, title: '城市'},
                 {field: 'rdate', title: '路线时间', minWidth: 150},
-                {field: 'rid', width: 80, title: 'rid', sort: true},
-                {field: 'rimage', width: 80, title: 'rimage', sort: true},
-                {field: 'rname', width: 80, title: 'rname'},
-                {field: 'routeIntroduce', width: 135, title: 'routeIntroduce', sort: true},
+                {field: 'rimage', width: 80, title: '图片', sort: true},
                 {field: 'sid', width: 80, title: 'sid'},
-                {field: 'sourceId', width: 80, title: 'sourceId'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limit: 10,
@@ -134,6 +120,7 @@
          * toolbar监听事件
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
+
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
                     title: '添加用户',
@@ -151,6 +138,7 @@
                 var checkStatus = table.checkStatus('currentTableId')
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
+
             }
         });
 
@@ -180,6 +168,18 @@
                 layer.confirm('真的删除行么', function (index) {
                     obj.del();
                     layer.close(index);
+                    //向服务端发送删除指令
+                    $.ajax({
+                        url: '/routeManage/routeDelete',
+                        type:'get',
+                        data:{'rid':data.rid},
+                        success:function (){
+                            layer.alert("删除成功！");
+                        },
+                        error:function (){
+                            layer.alert("删除失败！");
+                        }
+                    });
                 });
             }
         });

@@ -43,4 +43,21 @@ public class RouteServiceImpl implements RouteService {
         List<RouteImg> routeImgList=routeMapper.findRouteImageByRid(rid);
         return routeImgList;
     }
+
+    @Override
+    public int routeAcount() {
+        int routeAcount=routeMapper.routeAcount();
+        return routeAcount;
+    }
+
+    @Override
+    public List<Route> allRouteListPage(int page, int limit) {
+        List<Route> allRouteListPage=routeMapper.allRouteListPage(page,limit);
+        return allRouteListPage;
+    }
+
+    @Override
+    public void deleteByRid(int rid) {
+        routeMapper.deleteByRid(rid);
+    }
 }

@@ -21,4 +21,12 @@ public interface RouteService {
     void addFavoriteCount(int rid);
     //获取图片详情
     List<RouteImg> findRouteImageByRid(int rid);
+    //获取所有路线总数
+    int routeAcount();
+    //获取所有页面（传入分页参数）
+    List<Route> allRouteListPage(int page,int limit);
+    //根据路线rid删除路线（逻辑删除rFlag=0）
+    void deleteByRid(int rid);
+    //新增路线
+    void addRoute(Route route);
 }

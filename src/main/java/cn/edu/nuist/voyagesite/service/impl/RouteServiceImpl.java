@@ -45,9 +45,9 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public int routeAcount() {
-        int routeAcount=routeMapper.routeAcount();
-        return routeAcount;
+    public int routeCount() {
+        int routeCount=routeMapper.routeCount();
+        return routeCount;
     }
 
     @Override
@@ -63,12 +63,36 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public void addRoute(Route route) {
-
+        routeMapper.addRoute(route);
     }
 
     @Override
     public void editRoute(Route route) {
         routeMapper.editRoute(route);
     }
+
+
+    @Override
+    public List<Route> searchByRid(int page, int limit, int rid) {
+        List<Route> findByRidList=routeMapper.searchByRid(page, limit, rid);
+        return findByRidList;
+    }
+
+    @Override
+    public int searchByRidCount(int rid) {
+        int searchByRidCount=routeMapper.searchByRidCount(rid);
+        return searchByRidCount;
+    }
+
+    @Override
+    public List<Route> searchByRname(int page, int limit, String rname) {
+        List<Route> searchByRname=routeMapper.searchByRname(page, limit, rname);
+        return searchByRname;
+    }
+
+    @Override
+    public int searchByRnameCount(String rname) {
+        int searchByRnameCount=routeMapper.searchByRnameCount(rname);
+        return searchByRnameCount;
 
 }

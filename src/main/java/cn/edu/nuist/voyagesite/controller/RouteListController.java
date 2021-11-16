@@ -48,7 +48,7 @@ public class RouteListController {
     public String allRouteList(@RequestParam("page") int page,@RequestParam("limit") int limit){
         //分页
         List<Route> allRouteList=routeService.allRouteListPage(((page-1)*limit),limit);
-        int count=routeService.routeAcount();
+        int count=routeService.routeCount();
         //封装
         RutePackage rutePackage = new RutePackage();
         rutePackage.setCode(0);

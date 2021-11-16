@@ -42,31 +42,12 @@
           ]
         },
         {
-          "title": "路线管理",
-          "href": "",
-          "icon": "fa fa-plane",
-          "target": "_self",
-          "child": [
-            {
-              "title": "路线列表",
-              "href": "page/welcome-1.html",
-              "icon": "fa fa-list",
-              "target": "_self"
-            },
-            {
-              "title": "路线添加",
-              "href": "page/welcome-2.html",
-              "icon": "fa fa-list",
-              "target": "_self"
-            },
-            {
-              "title": "路线修改",
-              "href": "page/welcome-3.html",
-              "icon": "fa fa-list",
-              "target": "_self"
-            }
-          ]
+          "title": "旅游路线管理",
+          "href": "page/table-route.html",
+          "icon": "fa fa-file-text",
+          "target": "_self"
         },
+
         {
           "title": "系统管理",
           "href": "page/menu.html",

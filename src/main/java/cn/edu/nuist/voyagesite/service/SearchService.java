@@ -10,6 +10,6 @@ import java.util.List;
  * @date: 2021年11月14日14点59分
  */
 public interface SearchService {
-    //模糊搜索
+    //前台主页模糊搜索
     public List<Route> fuzzySearch(String rname);
 }

@@ -60,4 +60,9 @@ public class RouteServiceImpl implements RouteService {
     public void deleteByRid(int rid) {
         routeMapper.deleteByRid(rid);
     }
+
+    @Override
+    public void addRoute(Route route) {
+
+    }
 }

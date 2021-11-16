@@ -1,7 +1,9 @@
 package cn.edu.nuist.voyagesite.service;
 
 import cn.edu.nuist.voyagesite.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface UserLoginAndRegister {
     /**
      * 判断是否用户存在，

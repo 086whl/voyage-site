@@ -77,6 +77,12 @@
 
     <insert id="addRoute" parameterType="cn.edu.nuist.voyagesite.domain.Route">
         INSERT INTO tab_route(rid,rname,price,routeIntroduce,rflag,rdate,count,cid,rimage,sid)
-        VALUES(#{Route.rid},#{Route.rname},#{Route.price},#{Route.routeIntroduce},#{Route.rflag},#{Route.rdate},#{Route.count},#{Route.cid},#{Route.rimage},#{Route.sid})
+        VALUES(#{rid},#{rname},#{price},#{routeIntroduce},#{rflag},#{rdate},#{count},#{cid},#{rimage},#{sid})
     </insert>
+
+    <update id="editRoute" parameterType="cn.edu.nuist.voyagesite.domain.Route">
+        UPDATE tab_route SET rname=#{rname},price=#{price},routeIntroduce=#{routeIntroduce},rflag=#{rflag},count=#{count},cid=#{cid},rimage=#{rimage},sid=#{sid}
+        WHERE rid=#{rid}
+    </update>
+
 </mapper>

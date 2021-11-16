@@ -60,4 +60,13 @@ public class UnitTest {
         List<Route> resultList=searchService.fuzzySearch("官网");
         System.out.println(resultList.get(0));
     }
+    @Test
+    public void routePageTest(){
+        List<Route> routeList = routeMapper.allRouteListPage(0, 10);
+        System.out.println(routeList);
+    }
+    @Test
+    public  void routeDelete(){
+        routeMapper.deleteByRid(1);
+    }
 }

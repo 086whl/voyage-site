@@ -17,12 +17,10 @@ public class Route {
     private String routeIntroduce;//线路介绍
     private String rflag;   //是否上架，必输，0代表没有上架，1代表是上架
     private String rdate;   //上架时间
-    private String isThemeTour;//是否主题旅游，必输，0代表不是，1代表是
     private int count;//收藏数量
     private int cid;//所属分类，必输
     private String rimage;//缩略图
     private int sid;//所属商家
-    private String sourceId;//抓取数据的来源id
 
     private Category category;//所属分类
     private Seller seller;//所属商家
@@ -43,12 +41,10 @@ public class Route {
      * @param routeIntroduce
      * @param rflag
      * @param rdate
-     * @param isThemeTour
      * @param count
      * @param cid
      * @param rimage
      * @param sid
-     * @param sourceId
      */
     public Route(int rid, String rname, double price, String routeIntroduce, String rflag, String rdate, String isThemeTour, int count, int cid, String rimage, int sid, String sourceId) {
         this.rid = rid;
@@ -57,11 +53,9 @@ public class Route {
         this.routeIntroduce = routeIntroduce;
         this.rflag = rflag;
         this.rdate = rdate;
-        this.isThemeTour = isThemeTour;
         this.count = count;
         this.cid = cid;
         this.rimage = rimage;
         this.sid = sid;
-        this.sourceId = sourceId;
     }
 }

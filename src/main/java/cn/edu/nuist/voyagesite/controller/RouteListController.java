@@ -1,5 +1,6 @@
 package cn.edu.nuist.voyagesite.controller;
 
+import cn.edu.nuist.voyagesite.domain.RutePackage;
 import cn.edu.nuist.voyagesite.domain.PageBean;
 import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.service.PageService;
@@ -9,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,11 +28,6 @@ public class RouteListController {
     private PageService pageService;
     @RequestMapping(value="/route_list")
     public String routeListParam(Model model,Integer cId,Integer pageNo){
-//        //获取所有路线
-//        List<Route> routeList=routeService.allRouteList();
-////        String rName=routeList.get(0).getRname();
-////        model.addAttribute("rName", rName);
-//        model.addAttribute("routeList",routeList);
         //获取所有路线
         int PageSize=10;
         //获取分页
@@ -43,5 +39,24 @@ public class RouteListController {
         model.addAttribute("pageBean",pageBean);
         model.addAttribute("cId",cId);
         return "route_list";
+    }
+    @Autowired
+    @Qualifier("routeServiceImpl")
+    private RouteService routeService;
+    @ResponseBody
+    @RequestMapping(value = "/all_route_list")
+    public String allRouteList(@RequestParam("page") int page,@RequestParam("limit") int limit){
+        //分页
+        List<Route> allRouteList=routeService.allRouteListPage(((page-1)*limit),limit);
+        int count=routeService.routeAcount();
+        //封装
+        RutePackage rutePackage = new RutePackage();
+        rutePackage.setCode(0);
+        rutePackage.setMsg("success");
+        rutePackage.setData(allRouteList);
+        rutePackage.setCount(count);
+        //转为json
+        String allRouteList_J =JSON.toJSONString(rutePackage);
+        return allRouteList_J;
     }
 }

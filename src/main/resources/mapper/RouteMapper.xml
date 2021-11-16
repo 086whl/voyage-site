@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.nuist.voyagesite.mapper.RouteMapper">
     <select id="allRouteList" resultType="cn.edu.nuist.voyagesite.domain.Route">
-        select *
-        from tab_route
+        SELECT *
+        FROM tab_route
     </select>
     <select id="findRouteDetailByRid" resultMap="routeDetail">
         SELECT DISTINCT tr.rid,
@@ -12,12 +12,10 @@
                         tr.routeIntroduce,
                         tr.rflag,
                         tr.rdate,
-                        tr.isThemeTour,
                         tr.count,
                         tr.cid,
                         tr.rimage,
                         ts.sid,
-                        tr.sourceId,
                         ts.sname,
                         ts.consphone,
                         ts.address,
@@ -38,10 +36,8 @@
             <result column="routeIntroduce" property="routeIntroduce"/>
             <result column="rflag" property="rflag"/>
             <result column="rdate" property="rdate"/>
-            <result column="isThemeTour" property="isThemeTour"/>
             <result column="count" property="count"/>
             <result column="rimage" property="rimage"/>
-            <result column="sourceId" property="sourceId"/>
         </association>
         <association property="seller" javaType="cn.edu.nuist.voyagesite.domain.Seller">
             <id column="sid" property="sid"/>
@@ -63,4 +59,24 @@
     <select id="findRouteImageByRid" resultType="cn.edu.nuist.voyagesite.domain.RouteImg">
         SELECT rgid,rid,bigPic,smallPic FROM tab_route_img WHERE rid=#{rid}
     </select>
+    
+    <select id="routeAcount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM tab_route WHERE rflag=1
+    </select>
+
+    <select id="allRouteListPage" resultType="cn.edu.nuist.voyagesite.domain.Route">
+        SELECT *
+        FROM tab_route
+        WHERE rflag=1
+        LIMIT #{page},#{limit}
+    </select>
+
+    <update id="deleteByRid">
+        UPDATE tab_route SET rflag=0 WHERE rid=#{rid}
+    </update>
+
+    <insert id="addRoute" parameterType="cn.edu.nuist.voyagesite.domain.Route">
+        INSERT INTO tab_route(rid,rname,price,routeIntroduce,rflag,rdate,count,cid,rimage,sid)
+        VALUES(#{Route.rid},#{Route.rname},#{Route.price},#{Route.routeIntroduce},#{Route.rflag},#{Route.rdate},#{Route.count},#{Route.cid},#{Route.rimage},#{Route.sid})
+    </insert>
 </mapper>

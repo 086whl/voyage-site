@@ -1,10 +1,8 @@
 package cn.edu.nuist.voyagesite.controller;
 
-import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.domain.RouteImg;
 import cn.edu.nuist.voyagesite.domain.User;
-import cn.edu.nuist.voyagesite.mapper.RouteMapper;
 import cn.edu.nuist.voyagesite.service.FavoriteService;
 import cn.edu.nuist.voyagesite.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;

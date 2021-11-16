@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +44,15 @@ public class RouteListController {
         model.addAttribute("pageBean",pageBean);
         model.addAttribute("cId",cId);
         return "route_list";
+    }
+    @Autowired
+    @Qualifier("routeServiceImpl")
+    private RouteService routeService;
+    @ResponseBody
+    @RequestMapping(value = "/all_route_list")
+    public String allRouteList(){
+        List<Route> allRouteList=routeService.allRouteList();
+        String allRouteList_J =JSON.toJSONString(allRouteList);
+        return allRouteList_J;
     }
 }

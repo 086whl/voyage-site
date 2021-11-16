@@ -60,7 +60,7 @@
         SELECT rgid,rid,bigPic,smallPic FROM tab_route_img WHERE rid=#{rid}
     </select>
     
-    <select id="routeAcount" resultType="java.lang.Integer">
+    <select id="routeCount" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM tab_route WHERE rflag=1
     </select>
 
@@ -76,8 +76,8 @@
     </update>
 
     <insert id="addRoute" parameterType="cn.edu.nuist.voyagesite.domain.Route">
-        INSERT INTO tab_route(rid,rname,price,routeIntroduce,rflag,rdate,count,cid,rimage,sid)
-        VALUES(#{rid},#{rname},#{price},#{routeIntroduce},#{rflag},#{rdate},#{count},#{cid},#{rimage},#{sid})
+        INSERT INTO tab_route(rname,price,routeIntroduce,rflag,rdate,count,cid,rimage,sid)
+        VALUES(#{rname},#{price},#{routeIntroduce},#{rflag},#{rdate},#{count},#{cid},#{rimage},#{sid})
     </insert>
 
     <update id="editRoute" parameterType="cn.edu.nuist.voyagesite.domain.Route">
@@ -85,4 +85,19 @@
         WHERE rid=#{rid}
     </update>
 
+    <select id="searchByRid" resultType="cn.edu.nuist.voyagesite.domain.Route">
+        SELECT * FROM tab_route WHERE rid LIKE CONCAT('%',#{rid},'%') LIMIT #{page},#{limit}
+    </select>
+
+    <select id="searchByRidCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM tab_route WHERE rid LIKE CONCAT('%',#{rid},'%')
+    </select>
+
+    <select id="searchByRname" resultType="cn.edu.nuist.voyagesite.domain.Route">
+        SELECT * FROM tab_route WHERE rname LIKE CONCAT('%',#{rname},'%') LIMIT #{page},#{limit}
+    </select>
+
+    <select id="searchByRnameCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM tab_route WHERE rname LIKE CONCAT('%',#{rname},'%')
+    </select>
 </mapper>

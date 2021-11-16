@@ -65,4 +65,10 @@ public class RouteServiceImpl implements RouteService {
     public void addRoute(Route route) {
 
     }
+
+    @Override
+    public void editRoute(Route route) {
+        routeMapper.editRoute(route);
+    }
+
 }

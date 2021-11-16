@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -19,11 +21,12 @@ public class MyFavoriteController {
     @Qualifier("favoriteServiceImpl")
     FavoriteService favoriteService;
 
+    //找到收藏的route
     @RequestMapping("/findMyFavouriteRoute")
     public String findFavoriteRoute(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         List<Route> favoriteByUId = favoriteService.findFavoriteByUId(user.getUid());
-        model.addAttribute("favouriteRoutes",favoriteByUId);
+        model.addAttribute("favouriteRoutes", favoriteByUId);
 
         return "myfavorite";
     }
@@ -37,5 +40,14 @@ public class MyFavoriteController {
         }
         return false;
     }
+
+    //    删除收藏的路线
+    @RequestMapping("/removeMyroute")
+    public String removeMyroute(@RequestParam("rid") Integer rid,HttpSession session ) {
+         User user = (User) session.getAttribute("user");
+        favoriteService.removeMyroute(rid, user.getUid());
+        return "redirect:findMyFavouriteRoute";
+    }
+
 
 }

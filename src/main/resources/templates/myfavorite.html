@@ -18,7 +18,6 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script th:inline="javascript">
         $(function () {
-            //判断用户是否登录
             let username;
             let uid;
             $.get("findUser", {}, function (data) {
@@ -81,40 +80,43 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="home">
-<!--                    tr th:each="prod : ${prods}">-->
-                    <div class="row" >
+                    <!--                    tr th:each="prod : ${prods}">-->
+                    <div class="row">
                         <div class="col-md-3" th:each="route: ${favouriteRoutes}">
-                            <a href="route_detail.html">
-                                <img th:src="${route.rimage}" alt="">
-                                <div class="has_border">
+                            <img th:src="${route.rimage}" alt="">
+                            <div class="has_border">
+                                <a th:attr="href='route_detail?rid='+${route.rid}" href="route_detail.html">
                                     <h3 th:text="${route.rname}">上海直飞三亚5天4晚自由行(春节预售+亲子/蜜月/休闲游首选+豪华酒店任选+接送机)</h3>
-                                    <div class="price">网付价<em>￥</em><strong th:text="${route.price}">889</strong><em>起</em></div>
+                                </a>
+                                <div class="price">网付价<em>￥</em><strong th:text="${route.price}">889</strong><em>起</em>
+                                    <a th:attr="href='removeMyroute?rid='+${route.rid}">删除</a>
                                 </div>
-                            </a>
+                            </div>
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="pageNum">
-            <ul>
-                <li><a href="">首页</a></li>
-                <li class="threeword"><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">10</a></li>
-                <li class="threeword"><a href="javascript:;">下一页</a></li>
-                <li class="threeword"><a href="javascript:;">末页</a></li>
-            </ul>
-        </div>
+        <!--        <div class="pageNum">-->
+        <!--            <ul>-->
+        <!--                <li><a href="">首页</a></li>-->
+        <!--                <li class="threeword"><a href="#">上一页</a></li>-->
+        <!--                <li><a href="#">1</a></li>-->
+        <!--                <li><a href="#">2</a></li>-->
+        <!--                <li><a href="#">3</a></li>-->
+        <!--                <li><a href="#">4</a></li>-->
+        <!--                <li><a href="#">5</a></li>-->
+        <!--                <li><a href="#">6</a></li>-->
+        <!--                <li><a href="#">7</a></li>-->
+        <!--                <li><a href="#">8</a></li>-->
+        <!--                <li><a href="#">9</a></li>-->
+        <!--                <li><a href="#">10</a></li>-->
+        <!--                <li class="threeword"><a href="javascript:;">下一页</a></li>-->
+        <!--                <li class="threeword"><a href="javascript:;">末页</a></li>-->
+        <!--            </ul>-->
+        <!--        </div>-->
     </section>
 </section>
 <!-- 排行榜 end-->

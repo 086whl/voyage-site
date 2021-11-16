@@ -16,4 +16,6 @@ public interface FavoriteService {
     public void addFavoriteByUid(int rid,String date,int uid);
     //根据RID与UID查询记录是否存在
     public boolean isExistFavorite(int rid,int uid);
+
+    void removeMyroute(int rid, int uid);
 }

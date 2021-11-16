@@ -20,7 +20,11 @@
     </insert>
 
     <select id="isExistFavorite" resultType="java.lang.Boolean">
-        SELECT EXISTS(SELECT 1 FROM tab_favorite WHERE rid=#{rid} AND uid=#{uid})
+        SELECT EXISTS(SELECT 1 FROM tab_favorite WHERE rid = #{rid} AND uid = #{uid})
     </select>
-
+    <delete id="removeMyroute">
+        delete
+        from tab_favorite
+        where rid = #{rid} and uid=#{uid}
+    </delete>
 </mapper>

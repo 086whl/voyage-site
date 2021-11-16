@@ -27,7 +27,7 @@ public class UserController {
      */
     @SneakyThrows
     @RequestMapping("loginUser")
-    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession,ModelAndView modelAndView) throws Exception {
+    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession httpSession,ModelAndView modelAndView) {
         User user = userLoginAndRegister.isExistUser(username, password);
         if (user != null) {
             httpSession.setAttribute("user", user);
@@ -45,8 +45,10 @@ public class UserController {
      *
      * @return 返回true 注册成功
      */
+    @SneakyThrows
     @RequestMapping("/registerUser")
-    public boolean registerUser(User registerUser) throws Exception {
+    public boolean registerUser(User registerUser) {
+
         boolean ifCanUse = userLoginAndRegister.findUsername(registerUser.getUsername());
 //        如果可有返回true，注册用户
         if (ifCanUse) {

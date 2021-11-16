@@ -159,6 +159,25 @@
                     shadeClose: true,
                     area: ['100%', '100%'],
                     content: '../page/table/edit.html',
+                    success: function (layero, index) {
+                        //向layer页面传值，传值主要代码
+                        var body = layer.getChildFrame('body', index);
+
+                        //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                        //var iframeWin = window[layero.find('iframe')[0]['name']];
+
+                        //将弹窗页面中属性名name="fixure_id"的标签赋值
+                        body.find("[name='rid']").val(data.rid);
+                        body.find("[name='rname']").val(data.rname);
+                        body.find("[name='price']").val(data.price);
+                        body.find("[name='rdate']").val(data.rdate);
+                        body.find("[name='count']").val(data.count);
+                        body.find("[name='cid']").val(data.cid);
+                        body.find("[name='rimage']").val(data.rimage);
+                        body.find("[name='sid']").val(data.sid);
+                        // body.find("[name='routeIntroduce']").val(data.routeIntroduce);
+                        body.find("[name='rflag']").val(data.rflag);
+                    }
                 });
                 $(window).on("resize", function () {
                     layer.full(index);

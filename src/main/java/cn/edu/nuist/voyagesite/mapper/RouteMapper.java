@@ -31,4 +31,6 @@ public interface RouteMapper {
     void deleteByRid(int rid);
     //新增路线
     void addRoute(Route route);
+    //编辑路线
+    void editRoute(Route route);
 }

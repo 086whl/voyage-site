@@ -92,7 +92,7 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public int searchByRnameCount(String rname) {
-        int searchByRnameCount=routeMapper.searchByRnameCount(rname);
+        int searchByRnameCount = routeMapper.searchByRnameCount(rname);
         return searchByRnameCount;
-
+    }
 }

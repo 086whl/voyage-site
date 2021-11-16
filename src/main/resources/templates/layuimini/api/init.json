@@ -59,12 +59,6 @@
           "href": "page/setting.html",
           "icon": "fa fa-gears",
           "target": "_self"
-        },
-        {
-          "title": "表格示例",
-          "href": "page/table.html",
-          "icon": "fa fa-file-text",
-          "target": "_self"
         }
       ]
     }

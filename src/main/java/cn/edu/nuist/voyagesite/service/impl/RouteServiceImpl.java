@@ -71,6 +71,7 @@ public class RouteServiceImpl implements RouteService {
         routeMapper.editRoute(route);
     }
 
+
     @Override
     public List<Route> searchByRid(int page, int limit, int rid) {
         List<Route> findByRidList=routeMapper.searchByRid(page, limit, rid);
@@ -93,5 +94,5 @@ public class RouteServiceImpl implements RouteService {
     public int searchByRnameCount(String rname) {
         int searchByRnameCount=routeMapper.searchByRnameCount(rname);
         return searchByRnameCount;
-    }
+
 }

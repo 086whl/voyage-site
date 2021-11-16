@@ -1,6 +1,7 @@
 package cn.edu.nuist.voyagesite.service;
 
 import cn.edu.nuist.voyagesite.domain.Route;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @author: whl
  * @date: 2021年11月12日19点38分
  */
+@Service
 public interface FavoriteService {
     //根据用户ID查询收藏列表
     public List<Route> findFavoriteByUId(int uid);

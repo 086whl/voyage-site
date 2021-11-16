@@ -18,46 +18,17 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script th:inline="javascript">
         //搜索按钮
-        $("#search-button").click(function (){
-            let rname=$("#search_input").val();
-            window.location.href = "/mysearchresult?rname="+rname+"";
+        $("#search-button").click(function () {
+            let rname = $("#search_input").val();
+            window.location.href = "/mysearchresult?rname=" + rname + "";
         });
     </script>
 
 </head>
 <body>
 <!--引入头部-->
-<header>
-    <div class="top_banner">
-        <img src="images/top_banner.jpg" alt="">
-    </div>
-    <div class="shortcut">
-        <div class="login_out">
-            <button id="home_page">首页</button>
-        </div>
-    </div>
-    <div class="header_wrap">
-        <div class="topbar">
-            <div class="logo">
-                <a href="/"><img style="width: 207px;height:56px" src="images/logo.jpg" alt=""></a>
-            </div>
-            <div class="search">
-                <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
-                       autocomplete="off">
-                <a href="#" id="search-button" class="search-button">搜索</a>
-            </div>
-            <div class="hottel">
-                <div class="hot_pic">
-                    <img src="images/hot_tel.jpg" alt="">
-                </div>
-                <div class="hot_tel">
-                    <p class="hot_time">客服热线(9:00-6:00)</p>
-                    <p class="hot_num">400-618-9090</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<div id="header"></div>
+
 <!-- 排行榜 start-->
 <section id="content">
     <section class="hemai_jx">
@@ -71,18 +42,18 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="home">
-<!--                    tr th:each="prod : ${prods}">-->
-                    <div class="row" >
+                    <!--                    tr th:each="prod : ${prods}">-->
+                    <div class="row">
                         <div class="col-md-3" th:each="route: ${fuzzySearchResult}">
                             <a href="route_detail.html">
                                 <img th:src="${route.rimage}" alt="">
                                 <div class="has_border">
                                     <h3 th:text="${route.rname}">上海直飞三亚5天4晚自由行(春节预售+亲子/蜜月/休闲游首选+豪华酒店任选+接送机)</h3>
-                                    <div class="price">网付价<em>￥</em><strong th:text="${route.price}">889</strong><em>起</em></div>
+                                    <div class="price">网付价<em>￥</em><strong
+                                            th:text="${route.price}">889</strong><em>起</em></div>
                                 </div>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>

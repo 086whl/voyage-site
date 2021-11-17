@@ -16,11 +16,27 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 16/11/2021 22:19:40
+ Date: 17/11/2021 10:25:46
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tab_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `tab_admin`;
+CREATE TABLE `tab_admin`  (
+  `adminId` int NOT NULL,
+  `admin` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`adminId`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tab_admin
+-- ----------------------------
+INSERT INTO `tab_admin` VALUES (1, 'root', 'root');
 
 -- ----------------------------
 -- Table structure for tab_category
@@ -65,6 +81,7 @@ CREATE TABLE `tab_favorite`  (
 INSERT INTO `tab_favorite` VALUES (3, '2021-11-13', 10);
 INSERT INTO `tab_favorite` VALUES (4, '2021-11-13', 12);
 INSERT INTO `tab_favorite` VALUES (5, '2021-11-13', 11);
+INSERT INTO `tab_favorite` VALUES (7, '2021-11-16', 8);
 INSERT INTO `tab_favorite` VALUES (7, '2021-11-13', 11);
 INSERT INTO `tab_favorite` VALUES (7, '2021-11-13', 12);
 INSERT INTO `tab_favorite` VALUES (8, '2021-11-13', 10);
@@ -103,7 +120,7 @@ INSERT INTO `tab_route` VALUES (3, '【官网专享 5折预售 越南下龙湾+�
 INSERT INTO `tab_route` VALUES (4, '【官网专享 送箱 ¥1099秒杀 华东五市+乌镇+南浔 双飞6天 南京进上海出】升级1晚豪华酒店 漫步西湖【水墨江南】', 1099, '升级入住1晚豪华酒店；畅玩江南两大经典水乡——乌镇水乡和南浔水乡，体验这里的历史文化底蕴、清丽婉约的水乡古镇风貌。', '1', '2018-02-09 01:13:17', 3, 5, 'img/product/small/m3d91ef60e0c7fdeee97a4e2d3e5a42e84.jpg', 1);
 INSERT INTO `tab_route` VALUES (5, '梅州 双飞3天2晚 自由行套票【含广州直飞梅州早对晚含税往返机票+2晚梅州市区酒店】', 999, '含广州直飞梅州早对晚含税往返机票+2晚梅州市区酒店！', '1', '2018-02-09 01:13:17', 3, 5, 'img/product/small/m3ac1aa10b493b4b22221e19ba39f7e6a1.jpg', 1);
 INSERT INTO `tab_route` VALUES (6, '【宁夏银川 双飞4天】 银川中华回乡文化园 中卫沙坡头 宁夏回族自治区博物馆 西关清真寺', 1299, '中卫升级1晚豪华酒店！走进【宁夏沙坡头】，感受西北大漠风情、体会“大漠孤烟直，长河落日圆”的塞上风光！', '1', '2018-02-09 01:13:17', 1, 5, 'img/product/small/m312cf97538027a813a4fb0bd6980a7fea.jpg', 1);
-INSERT INTO `tab_route` VALUES (7, '【¥1099秒杀 约惠华东五市+乌镇+木渎+灵山大佛 双飞6天 无锡进上海出】升级2晚豪华酒店', 1099, '畅玩乌镇水乡和木渎水乡，游览上海迪士尼小镇，其中升级入住2晚豪华酒店，品尝杭州特色宴“乾隆御茶宴”，送品尝金秋肥美大闸蟹一只！', '1', '2018-02-09 01:13:17', 2, 5, 'img/product/small/m370365f2ea91b638695218a6df13e3819.jpg', 1);
+INSERT INTO `tab_route` VALUES (7, '【¥1099秒杀 约惠华东五市+乌镇+木渎+灵山大佛 双飞6天 无锡进上海出】升级2晚豪华酒店', 1099, '畅玩乌镇水乡和木渎水乡，游览上海迪士尼小镇，其中升级入住2晚豪华酒店，品尝杭州特色宴“乾隆御茶宴”，送品尝金秋肥美大闸蟹一只！', '1', '2018-02-09 01:13:17', 3, 5, 'img/product/small/m370365f2ea91b638695218a6df13e3819.jpg', 1);
 INSERT INTO `tab_route` VALUES (8, '【¥1099秒杀 特惠华东五市+乌镇+木渎+灵山大佛 双飞6天 上海进杭州出】升级2晚豪华酒店', 1099, '升级两晚豪华酒店，畅游双水乡乌镇+木渎古镇，南京中山陵，杭州西湖！', '1', '2018-02-09 01:13:17', 1, 5, 'img/product/small/m30971b3d22ab37242636088780cfb8eb5.jpg', 1);
 INSERT INTO `tab_route` VALUES (9, '【豪叹喜来登 桂林 阳朔西街高铁4天纯玩 高级团】漓江 西山公园 象鼻山 银子岩', 1299, '1晚指定入住福朋喜来登酒店，船游全程大漓江，游览世界溶洞奇观银子岩', '1', '2018-02-09 01:13:17', 2, 5, 'img/product/small/m35c17b5b73d618bbdd2abe231f1307838.jpg', 1);
 INSERT INTO `tab_route` VALUES (10, '【春节 湖南郴州莽山+东江湖+冰雪森林温泉 高铁3天 顶贵团】欢迎年宴+温泉养生宴+农家菜【金狗闹郴晚·冰天雪地泡温泉】', 2399, '莽山景区入住“森林中的皇宫”之美誉的莽山森林温泉酒店；市区入住享“酒店就是景区”美誉的国际奢华品牌酒店---温德姆至尊豪庭酒店！', '1', '2018-02-09 01:13:17', 1, 5, 'img/product/small/m3c9823bc50368af0fe83eff14a5587c0a.jpg', 1);

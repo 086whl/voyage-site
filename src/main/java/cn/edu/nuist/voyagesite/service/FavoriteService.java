@@ -13,11 +13,14 @@ import java.util.List;
 @Service
 public interface FavoriteService {
     //根据用户ID查询收藏列表
-    public List<Route> findFavoriteByUId(int uid);
+    List<Route> findFavoriteByUId(int uid);
     //添加收藏列表
-    public void addFavoriteByUid(int rid,String date,int uid);
+    void addFavoriteByUid(int rid,String date,int uid);
     //根据RID与UID查询记录是否存在
-    public boolean isExistFavorite(int rid,int uid);
+    boolean isExistFavorite(int rid,int uid);
 
     void removeMyroute(int rid, int uid);
+
+    //收藏排行榜
+    List<Route> favoriteRank();
 }

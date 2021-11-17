@@ -18,6 +18,6 @@ public interface PageService {
      * @param size 页面大小
      * @return
      */
-    public PageBean<Route> routeListByCidPage(Integer cId,Integer page, Integer size);
+    PageBean<Route> routeListByCidPage(Integer cId,Integer page, Integer size);
 
 }

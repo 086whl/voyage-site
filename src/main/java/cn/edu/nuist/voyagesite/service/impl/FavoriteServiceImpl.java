@@ -40,4 +40,10 @@ public class FavoriteServiceImpl implements FavoriteService {
     public void removeMyroute(int rid, int uid) {
         favoriteMapper.removeMyroute(rid,uid);
     }
+
+    @Override
+    public List<Route> favoriteRank() {
+        List<Route> favoriteRankList=favoriteMapper.favoriteRank();
+        return favoriteRankList;
+    }
 }

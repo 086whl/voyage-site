@@ -45,13 +45,15 @@
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
                 <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">admin</a>
+                    <a href="javascript:;" id="name">admin</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料"
+                               data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码"
+                               data-icon="fa fa-gears">修改密码</a>
                         </dd>
                         <dd>
                             <hr>
@@ -78,10 +80,10 @@
     </div>
 
     <!--手机端遮罩层-->
-<!--    <div class="layuimini-make"></div>-->
+    <!--    <div class="layuimini-make"></div>-->
 
     <!-- 移动导航 -->
-<!--    <div class="layuimini-site-mobile"><i class="layui-icon"></i></div>-->
+    <!--    <div class="layuimini-site-mobile"><i class="layui-icon"></i></div>-->
 
     <div class="layui-body">
 
@@ -115,11 +117,23 @@
 <script src="lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin,
             miniTongji = layui.miniTongji;
+        //判断用户是否登录没有登录返回登录页面
+        $.get("findAdminLogin",function (data){
+            // alert(data)
+            if(data){
+                // alert("123")
+               let name= data.admin;
+               $("#name").html(name);
+            }
+            else {
+                window.location = 'page/login-1.html';
+            }
+        });
 
         var options = {
             iniUrl: "api/init.json",    // 初始化接口
@@ -143,11 +157,15 @@
                 'layuimini-onepage.99php.cn',
             ],
         });
-
+//退出登录
         $('.login-out').on("click", function () {
-            layer.msg('退出登录成功', function () {
-                window.location = 'page/login-3.html';
-            });
+            $.get('exitAdmin', function (data) {
+                layer.msg(data, function () {
+                    window.location = 'page/login-1.html';
+
+                });
+            })
+
         });
     });
 </script>

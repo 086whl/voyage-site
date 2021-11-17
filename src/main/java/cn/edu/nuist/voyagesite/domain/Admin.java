@@ -11,4 +11,7 @@ public class Admin {
     private int adminId;
     private String admin;
     private String password;
+    private String phone;
+    private String email;
+    private String message;
 }

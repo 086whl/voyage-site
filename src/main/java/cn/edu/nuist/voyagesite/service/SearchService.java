@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface SearchService {
     //前台主页模糊搜索
-    public List<Route> fuzzySearch(String rname);
+    List<Route> fuzzySearch(String rname);
 }

@@ -24,7 +24,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label required">管理账号</label>
                 <div class="layui-input-block">
-                    <input id="username" type="text" name="username" lay-verify="required" lay-reqtext="管理账号不能为空"
+                    <input id="admin" type="text" name="admin" lay-verify="required" lay-reqtext="管理账号不能为空"
                            placeholder="请输入管理账号" value="admin" class="layui-input" readonly="readonly">
                     <tip>填写自己管理账号的名称。</tip>
                 </div>
@@ -32,7 +32,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label required">手机</label>
                 <div class="layui-input-block">
-                    <input id="phone" type="number" name="phone" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机"
+                    <input id="phone" type="number" name="phone" lay-verify="required" lay-reqtext="手机不能为空"
+                           placeholder="请输入手机"
                            value="" class="layui-input">
                 </div>
             </div>
@@ -45,7 +46,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注信息</label>
                 <div class="layui-input-block">
-                    <textarea id="remark" name="remark" class="layui-textarea" placeholder="请输入备注信息"></textarea>
+                    <textarea id="message" name="message" class="layui-textarea" placeholder="请输入备注信息"></textarea>
                 </div>
             </div>
 
@@ -69,12 +70,10 @@
         $.get("../findAdminLogin", function (data) {
             // alert(data.admin)
             if (data != null) {
-                // name = data.admin;
-                alert(name);
-                $("#username").attr("value",data.admin);
-                $("#phone").attr("value",data.phone);
-                $("#remark").html(data.message);
-                $("#email").attr("value",data.email);
+                $("#admin").attr("value", data.admin);
+                $("#phone").attr("value", data.phone);
+                $("#message").html(data.message);
+                $("#email").attr("value", data.email);
 
             } else {
                 window.location = ' login_1.html';
@@ -82,14 +81,22 @@
         });
         //监听提交
         form.on('submit(saveBtn)', function (data) {
+            $.post("../../updateAdminInfo", data.field, function (data) {
+                if (data) {
+                    layer.msg("更新成功");
 
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-                layer.close(index);
-                miniTab.deleteCurrentByIframe();
-            });
-            return false;
+                } else {
+                    layer.msg("更新失败");
+
+                }
+            })
+            // var index = layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // }, function () {
+            //     layer.close(index);
+            //     miniTab.deleteCurrentByIframe();
+            // });
+            // return false;
         });
 
     });

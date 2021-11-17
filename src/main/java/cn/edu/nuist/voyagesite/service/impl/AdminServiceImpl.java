@@ -21,4 +21,10 @@ public class AdminServiceImpl implements AdminService {
     public void updatePassword(String username, String password) {
         adminMapper.update(username, password);
     }
+
+    @Override
+    public boolean updateAdminInfo(Admin admin) {
+        boolean b = adminMapper.updateAdminInfo(admin.getAdmin(), admin.getPhone(), admin.getEmail(), admin.getMessage());
+        return b;
+    }
 }

@@ -21,8 +21,9 @@ public class AdminController {
 
     /**
      * 管理员登录
-     * @param username 传入用户名
-     * @param password 传入密码
+     *
+     * @param username    传入用户名
+     * @param password    传入密码
      * @param httpSession session保存登录的管理员信息
      * @return 返回true登录成功，否则失败
      */
@@ -39,6 +40,7 @@ public class AdminController {
 
     /**
      * 修改密码
+     *
      * @param oldPassword 旧密码
      * @param newPassword 新密码
      * @param httpSession session 与登录用户密码比对
@@ -58,6 +60,7 @@ public class AdminController {
 
     /**
      * 查询用户是否登录，没有登录返回null，否则返回用户名
+     *
      * @param httpSession
      * @return
      */
@@ -70,10 +73,28 @@ public class AdminController {
         return (Admin) httpSession.getAttribute("admin");
     }
 
+    @RequestMapping("updateAdminInfo")
+    public boolean updateAdminInfo(Admin admin, HttpSession httpSession) {
+        adminService.updateAdminInfo(admin);
+//        更新session信息
+        Admin oldAdmin = (Admin) httpSession.getAttribute("admin");
+        Admin updatedAdmin = adminService.findAdmin(oldAdmin.getAdmin(), oldAdmin.getPassword());
+        if (admin != null) {
+            httpSession.setAttribute("admin", admin);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
+    /**
+     * 管理员退出
+     *
+     * @param httpSession
+     * @return
+     */
     @RequestMapping("layuimini/exitAdmin")
-
     public String exitAdmin(HttpSession httpSession) {
         httpSession.removeAttribute("admin");
         return "退出成功";

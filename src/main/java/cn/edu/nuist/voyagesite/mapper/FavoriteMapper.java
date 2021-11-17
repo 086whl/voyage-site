@@ -14,11 +14,7 @@ import java.util.List;
 @Mapper
 public interface FavoriteMapper {
     //根据用户id查询路线id
-
     List<Route> findFavoriteByUId(@Param("uid") int uid);
-
-
-
     //添加收藏列表
     void addFavoriteByUId(@Param("rid") int rid,@Param("date") String date,@Param("uid") int uid);
 
@@ -26,4 +22,6 @@ public interface FavoriteMapper {
     Boolean isExistFavorite(@Param("rid") int rid,@Param("uid") int uid);
 
     void removeMyroute(int rid, int uid);
+    //收藏排行榜
+    List<Route> favoriteRank();
 }

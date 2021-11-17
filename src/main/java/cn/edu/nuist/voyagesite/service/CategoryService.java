@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CategoryService {
     //所有分类
-    public List<Category> findAll();
+    List<Category> findAll();
 }

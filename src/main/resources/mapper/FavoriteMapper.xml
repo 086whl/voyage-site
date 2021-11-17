@@ -27,4 +27,8 @@
         from tab_favorite
         where rid = #{rid} and uid=#{uid}
     </delete>
+
+    <select id="favoriteRank" resultType="cn.edu.nuist.voyagesite.domain.Route">
+        SELECT  * FROM tab_route ORDER BY count DESC LIMIT 8
+    </select>
 </mapper>

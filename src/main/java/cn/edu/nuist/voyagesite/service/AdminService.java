@@ -10,4 +10,5 @@ public interface AdminService {
 //    修改管理员密码
     void updatePassword(String username, String password);
 
+    boolean updateAdminInfo(Admin admin);
 }

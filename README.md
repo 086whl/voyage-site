@@ -1,6 +1,3 @@
----
-typora-root-url: src\main\resources\image
----
 
 # voyage-site
 2021年11月6日   初始化
@@ -100,64 +97,64 @@ voyage-site旅游信息分享网站是基于SpringBoot+Mybatis+Thymeleaf开发�
 
 前台首页：
 
-![image-20211116222740397](/image-20211116222740397.png)
+![image-20211116222740397](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116222740397.png)
 
 用户登录页面：
 
-![image-20211116222909347](/image-20211116222909347.png)
+![image-20211116222909347](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116222909347.png)
 
 用户注册页面：
 
-![image-20211116223015840](/image-20211116223015840-16370746970411.png)
+![image-20211116223015840](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223015840-16370746970411.png)
 
 分类商品列表展示：
 
-![image-20211116223136673](/image-20211116223136673-16370746998082.png)
+![image-20211116223136673](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223136673-16370746998082.png)
 
 列表分页显示：
 
-![image-20211116223158751](/image-20211116223158751.png)
+![image-20211116223158751](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223158751.png)
 
 商品详情页面：
 
-![image-20211116223305846](/image-20211116223305846.png)
+![image-20211116223305846](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223305846.png)
 
 添加收藏功能：
 
-![image-20211116223335769](/image-20211116223335769.png)
+![image-20211116223335769](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223335769.png)
 
-![image-20211116223351032](/image-20211116223351032.png)
+![image-20211116223351032](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223351032.png)
 
 用户收藏管理：
 
-![image-20211116223428795](/image-20211116223428795.png)
+![image-20211116223428795](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223428795.png)
 
 商品模糊搜索：
 
-![image-20211116223527631](/image-20211116223527631.png)
+![image-20211116223527631](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223527631.png)
 
-收藏排行榜：![image-20211117102743110](/image-20211117102743110-16371160658611.png)
+收藏排行榜：![image-20211117102743110](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211117102743110-16371160658611.png)
 
 
 
 后台登录：
 
-![image-20211116223945408](/image-20211116223945408.png)
+![image-20211116223945408](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116223945408.png)
 
 后台旅游线路管理：
 
-![image-20211116224015191](/image-20211116224015191.png)
+![image-20211116224015191](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224015191.png)
 
-![image-20211116224045850](/image-20211116224045850.png)
+![image-20211116224045850](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224045850.png)
 
 后台旅游路线信息新增、编辑与删除：
 
-![image-20211116224307708](/image-20211116224307708.png)
+![image-20211116224307708](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224307708.png)
 
-![image-20211116224324619](/image-20211116224324619.png)
+![image-20211116224324619](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224324619.png)
 
-![image-20211116224346618](/image-20211116224346618.png)
+![image-20211116224346618](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224346618.png)
 
 后台旅游路线信息模糊搜索：
 
-![image-20211116224434340](/image-20211116224434340.png)
+![image-20211116224434340](https://github.com/086whl/voyage-site/blob/master/src/main/resources/image/image-20211116224434340.png)

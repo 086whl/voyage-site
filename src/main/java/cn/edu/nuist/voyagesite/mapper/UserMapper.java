@@ -19,7 +19,7 @@ public interface UserMapper {
 
     boolean updateUserInfo(User user);
 
-    boolean deleteUser(List uid);
+    boolean deleteUser(int uid);
 
     List<User> findAllUser(int page,int limit);
 }

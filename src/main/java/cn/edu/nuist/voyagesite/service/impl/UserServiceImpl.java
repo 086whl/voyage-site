@@ -89,9 +89,9 @@ public class UserServiceImpl implements UserService {
      * @return 返回true删除欧克
      */
     @Override
-    public boolean deleteUser(List uids) {
+    public boolean deleteUser(int uid) {
 
-        return  userMapper.deleteUser(uids);
+        return  userMapper.deleteUser(uid);
     }
 
 }

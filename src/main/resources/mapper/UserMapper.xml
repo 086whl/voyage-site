@@ -20,11 +20,13 @@
         values (#{username}, #{password}, #{name}, #{birthday}, #{sex}, #{telephone}, #{email})
     </insert>
     <!--    通过模糊查询用户名查询用户信息-->
-    <select id="findUserByUsername" parameterType="String" resultMap="users">
+    <select id="findUserByUsername" resultMap="users">
         select *
         from tab_user
         where username like CONCAT('%', #{username}, '%')
-        limit #{page} , #{limit}
+          and status = 1
+            limit #{page}
+            , #{limit}
     </select>
     <resultMap id="users" type="cn.edu.nuist.voyagesite.domain.User">
         <result property="uid" column="uid"/>
@@ -53,17 +55,15 @@
 
     <select id="findAllUser" resultMap="users">
         select *
-        from tab_user LIMIT #{page},#{limit}
+        from tab_user
+        where  status=1 LIMIT #{page},#{limit}
     </select>
 
-    <!--    删除用户信息-->
+    <!--    删除用户,设置状态为0-->
     <delete id="deleteUser" parameterType="int">
-        delete
-        from tab_user
-        where uid in
-        <foreach collection="list" item="uid" index="no" open="(" separator="," close=")">
-            #{uid}
-        </foreach>
+        update tab_user
+        set status=0
+        where uid = #{uid}
 
     </delete>
 

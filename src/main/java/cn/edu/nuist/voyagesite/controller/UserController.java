@@ -149,11 +149,11 @@ public class UserController {
     /**
      * 根据用户uid删除用户信息
      *
-     * @param uids
+     * @param 
      * @return 返回true删除成功
      */
     @RequestMapping("deleteUser")
-    public boolean deleteUser(@RequestParam("uid") List uids) {
-        return userService.deleteUser(uids);
+    public boolean deleteUser(@RequestParam("uid") int uid) {
+        return userService.deleteUser(uid);
     }
 }

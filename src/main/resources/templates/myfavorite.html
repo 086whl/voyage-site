@@ -30,6 +30,11 @@
             $("#home_page").click(function () {
                 location.href = "index.html";
             });
+            // 搜索
+            $("#search-button").click(function () {
+                let word = $("#search_input").val();
+                location.href = "searchRoute?uid=" + uid + "&word=" + word ;
+            });
         });
     </script>
 
@@ -53,7 +58,7 @@
             <div class="search">
                 <input name="" id="search_input" type="text" placeholder="请输入路线名称" class="search_input"
                        autocomplete="off">
-                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
+                <button id="search-button" class="search-button">搜索</button>
             </div>
             <div class="hottel">
                 <div class="hot_pic">
@@ -99,24 +104,6 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="pageNum">-->
-        <!--            <ul>-->
-        <!--                <li><a href="">首页</a></li>-->
-        <!--                <li class="threeword"><a href="#">上一页</a></li>-->
-        <!--                <li><a href="#">1</a></li>-->
-        <!--                <li><a href="#">2</a></li>-->
-        <!--                <li><a href="#">3</a></li>-->
-        <!--                <li><a href="#">4</a></li>-->
-        <!--                <li><a href="#">5</a></li>-->
-        <!--                <li><a href="#">6</a></li>-->
-        <!--                <li><a href="#">7</a></li>-->
-        <!--                <li><a href="#">8</a></li>-->
-        <!--                <li><a href="#">9</a></li>-->
-        <!--                <li><a href="#">10</a></li>-->
-        <!--                <li class="threeword"><a href="javascript:;">下一页</a></li>-->
-        <!--                <li class="threeword"><a href="javascript:;">末页</a></li>-->
-        <!--            </ul>-->
-        <!--        </div>-->
     </section>
 </section>
 <!-- 排行榜 end-->

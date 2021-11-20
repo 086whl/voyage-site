@@ -49,7 +49,7 @@ public class UserTest {
         list.add(18);
         list.add(19);
 
-        boolean userByUsername = userMapper.deleteUser(list);
+        boolean userByUsername = userMapper.deleteUser(1);
         System.out.println("te = " + userByUsername);
 
     }

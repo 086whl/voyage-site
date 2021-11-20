@@ -15,6 +15,7 @@ public class SessionInterceptor implements HandlerInterceptor {
         //拦截登录页面
         if(request.getRequestURI().equals("/login.html")){
             //通过session内容判断用户是否已登录
+
             Object obj=request.getSession().getAttribute("user");
             if(obj!=null){
                 response.setContentType("text/html; charset=UTF-8");
@@ -24,5 +25,17 @@ public class SessionInterceptor implements HandlerInterceptor {
             }
         }
         return true;
+
+//        if(request.getRequestURI().equals("/login.html"))
+//            return true;
+//        if (request.getRequestURI().equals("/index.html"))
+//            return true;
+//        if (request.getRequestURI().equals("/layuimini/page/login-1.html"))
+//            return true;
+//        if ((request.getSession().getAttribute("user"))!=null)
+//            return true;
+//        if ((request.getSession().getAttribute("admin"))!=null)
+//            return true;
+//        return false;
     }
 }

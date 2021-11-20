@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootTest
 public class UserTest {
     @Autowired
@@ -17,9 +20,44 @@ public class UserTest {
         System.out.println(userMapperByUsernameAndPassword);
     }
     @Test
-    public void saveTest(){
-        User user = new User();
-        user.setUsername("yff");
-        user.setPassword("122");
+    public void findUserByUsernameTest(){
+
+        List<User> userByUsername = userMapper.findUserByUsername("te",1,1);
+        System.out.println("te = " + userByUsername);
+
+    }
+    @Test
+    public void findAllUserTest(){
+
+        List<User> userByUsername = userMapper.findAllUser(1,1);
+        System.out.println("te = " + userByUsername);
+    }
+    @Test
+    public void updateUserInfoTest(){
+        User user = new User(21,"user",null,"yin",null,null,null,null,null,null);
+
+        boolean userByUsername = userMapper.updateUserInfo(user);
+        System.out.println("te = " + userByUsername);
+
+    }
+    @Test
+    public void deleteUserInfo(){
+
+        List list =new ArrayList();
+        list.add(16);
+        list.add(17);
+        list.add(18);
+        list.add(19);
+
+        boolean userByUsername = userMapper.deleteUser(list);
+        System.out.println("te = " + userByUsername);
+
+    }
+    @Test
+    public void findAllUSer(){
+
+        List<User> allUser = userMapper.findAllUser(1,1);
+        System.out.println("te = " + allUser);
+
     }
 }

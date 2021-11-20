@@ -1,7 +1,6 @@
 package cn.edu.nuist.voyagesite.domain;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @Description: 用户实体类
@@ -10,7 +9,9 @@ import lombok.ToString;
  */
 @Data
 @ToString
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class User {
     private int uid;//用户id
     private String username;//用户名，账号

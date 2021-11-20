@@ -14,6 +14,8 @@ public class AdminTest {
 //        Admin admin = adminMapper.findAdmin("root", "123");
 //        System.out.println("admin = " + admin);
 //        adminMapper.update("root","root");
-        adminMapper.updateAdminInfo("root","111","222","222");
+//        adminMapper.updateAdminInfo("root","111","222","222");
+        String a = "1230"+new String("asd");
+        System.out.println(a);
     }
 }

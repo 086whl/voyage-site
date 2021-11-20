@@ -3,6 +3,8 @@ package cn.edu.nuist.voyagesite.mapper;
 import cn.edu.nuist.voyagesite.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -12,4 +14,12 @@ public interface UserMapper {
 
 
     String findUsername(String username);
+
+    List<User> findUserByUsername(String username,int page,int limit);
+
+    boolean updateUserInfo(User user);
+
+    boolean deleteUser(List uid);
+
+    List<User> findAllUser(int page,int limit);
 }

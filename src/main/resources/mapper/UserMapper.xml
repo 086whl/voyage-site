@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.nuist.voyagesite.mapper.UserMapper">
-
+    <!--查询用户是否存在-->
     <select id="findUsername" resultType="String">
         select username
         from tab_user
@@ -19,4 +19,52 @@
         insert into tab_user(username, password, name, birthday, sex, telephone, email)
         values (#{username}, #{password}, #{name}, #{birthday}, #{sex}, #{telephone}, #{email})
     </insert>
+    <!--    通过模糊查询用户名查询用户信息-->
+    <select id="findUserByUsername" parameterType="String" resultMap="users">
+        select *
+        from tab_user
+        where username like CONCAT('%', #{username}, '%')
+        limit #{page} , #{limit}
+    </select>
+    <resultMap id="users" type="cn.edu.nuist.voyagesite.domain.User">
+        <result property="uid" column="uid"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="telephone" column="telephone"/>
+        <result property="email" column="email"/>
+        <result property="status" column="status"/>
+        <result property="code" column="code"/>
+    </resultMap>
+
+    <!--    更新用户信息-->
+    <update id="updateUserInfo" parameterType="user">
+        update tab_user
+        set username=#{username},
+            name=#{name},
+            birthday=#{birthday},
+            sex=#{sex},
+            telephone=#{telephone},
+            email=#{email}
+        where uid = #{uid}
+    </update>
+
+    <select id="findAllUser" resultMap="users">
+        select *
+        from tab_user LIMIT #{page},#{limit}
+    </select>
+
+    <!--    删除用户信息-->
+    <delete id="deleteUser" parameterType="int">
+        delete
+        from tab_user
+        where uid in
+        <foreach collection="list" item="uid" index="no" open="(" separator="," close=")">
+            #{uid}
+        </foreach>
+
+    </delete>
+
 </mapper>

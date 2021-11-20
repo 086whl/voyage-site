@@ -53,5 +53,5 @@ public interface UserService {
      * @param uid 依据uid
      * @return true删除成功
      */
-    boolean deleteUser(List uids);
+    boolean deleteUser(int uid);
 }

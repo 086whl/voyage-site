@@ -27,15 +27,15 @@ public class MyFavoriteController {
         User user = (User) session.getAttribute("user");
         List<Route> favoriteByUId = favoriteService.findFavoriteByUId(user.getUid());
         model.addAttribute("favouriteRoutes", favoriteByUId);
-
         return "myfavorite";
     }
+
     //判断用户是否已收藏
     @ResponseBody
     @RequestMapping("/isExistFavorite")
-    public Boolean isExistFavorite(Integer rid,Integer uid){
-        boolean flag=favoriteService.isExistFavorite(rid,uid);
-        if(flag){
+    public Boolean isExistFavorite(Integer rid, Integer uid) {
+        boolean flag = favoriteService.isExistFavorite(rid, uid);
+        if (flag) {
             return true;
         }
         return false;
@@ -43,11 +43,19 @@ public class MyFavoriteController {
 
     //    删除收藏的路线
     @RequestMapping("/removeMyroute")
-    public String removeMyroute(@RequestParam("rid") Integer rid,HttpSession session ) {
-         User user = (User) session.getAttribute("user");
+    public String removeMyroute(@RequestParam("rid") Integer rid, HttpSession session) {
+        User user = (User) session.getAttribute("user");
         favoriteService.removeMyroute(rid, user.getUid());
         return "redirect:findMyFavouriteRoute";
     }
 
+    //收藏页面搜索结果
+    @RequestMapping("/searchRoute")
+    public String searchRoute(@RequestParam("uid") int uid,@RequestParam("word") String word, Model model) {
+        System.out.println( uid+word);
+        List<Route> routes = favoriteService.searchRoute(uid,word);
+        model.addAttribute("favouriteRoutes", routes);
+        return "myfavorite";
+    }
 
 }

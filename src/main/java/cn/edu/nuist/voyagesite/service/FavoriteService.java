@@ -23,4 +23,6 @@ public interface FavoriteService {
 
     //收藏排行榜
     List<Route> favoriteRank();
+
+    List<Route> searchRoute(int uid,String word);
 }

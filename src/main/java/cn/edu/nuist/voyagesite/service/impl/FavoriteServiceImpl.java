@@ -46,4 +46,10 @@ public class FavoriteServiceImpl implements FavoriteService {
         List<Route> favoriteRankList=favoriteMapper.favoriteRank();
         return favoriteRankList;
     }
+
+    @Override
+    public List<Route> searchRoute(int uid,String word) {
+        List<Route> routes = favoriteMapper.searchRoute(uid,word);
+        return routes;
+    }
 }

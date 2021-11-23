@@ -149,7 +149,7 @@ public class UserController {
     /**
      * 根据用户uid删除用户信息
      *
-     * @param 
+     * @param
      * @return 返回true删除成功
      */
     @RequestMapping("deleteUser")

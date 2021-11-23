@@ -70,6 +70,25 @@
             return flag;
         }
 
+        //检查用户电话
+        function checkPhone() {
+        //1.获取电话
+            var phone = $("#telephone").val();
+        //2.定义正则
+            var reg_phone = /^1[3456789]\d{9}$/
+        //3.判断
+            var flag = reg_phone.test(phone);
+            if (flag) {
+                $("#telephone").css("border", "");
+                $("#tip_ph").css("visibility", "hidden")
+            } else {
+                $("#telephone").css("border", "1px solid red");
+                //邮箱非法，右侧增加文字提示
+                $("#tip_ph").css("visibility", "visible")
+            }
+            return flag;
+        }
+
         //校验邮箱
         function checkEmail() {
             //1.获取邮箱
@@ -94,12 +113,12 @@
         $(function () {
             //当表单提交时，调用所有的校验方法
             $("#registerForm").submit(function () {
-                var birthday=$("#birthday").val()
-                if(birthday==" "){
-                    birthday=null;
+                var birthday = $("#birthday").val()
+                if (birthday == " ") {
+                    birthday = null;
                 }
                 //1.发送数据到服务器
-                if (checkUsername() && checkPassword() && checkEmail()) {
+                if (checkUsername() && checkPassword() && checkEmail()&&checkPhone()) {
 
                     //校验通过,发送ajax请求，提交表单的数据   username=zhangsan&password=123
 
@@ -156,7 +175,7 @@
                             <input type="text" id="username" name="username" placeholder="请输入账号">
                         </td>
                         <td class="td_right">
-                            <span id="tip_un" class="td_tip">用户名不小于8位</span>
+                            <span id="tip_un" class="td_tip" style="font-size: 15px">用户名不小于8位</span>
                         </td>
                     </tr>
                     <tr>
@@ -167,7 +186,7 @@
                             <input type="password" id="password" name="password" placeholder="请输入密码">
                         </td>
                         <td class="td_right">
-                            <span id="tip_pw" class="td_tip">密码不小于8位</span>
+                            <span id="tip_pw" class="td_tip" style="font-size: 15px">密码不小于8位</span>
                         </td>
                     </tr>
                     <tr>
@@ -178,7 +197,7 @@
                             <input type="text" id="email" name="email" placeholder="请输入Email">
                         </td>
                         <td class="td_right">
-                            <span id="tip_em" class="td_tip">请输入正确邮箱格式</span>
+                            <span id="tip_em" class="td_tip" style="font-size: 15px">请输入正确邮箱格式</span>
                         </td>
                     </tr>
                     <tr>
@@ -186,7 +205,7 @@
                             <label for="name">姓名</label>
                         </td>
                         <td class="td_right">
-                            <input type="text" id="name" name="name" placeholder="请输入真实姓名">
+                            <input type="text" id="name" name="name" placeholder="请输入真实姓名" required>
                         </td>
                     </tr>
                     <tr>
@@ -194,7 +213,10 @@
                             <label for="telephone">手机号</label>
                         </td>
                         <td class="td_right">
-                            <input  type="text" id="telephone" name="telephone" placeholder="请输入您的手机号">
+                            <input type="text" id="telephone" name="telephone" placeholder="请输入您的手机号" required>
+                        </td>
+                        <td class="td_right">
+                            <span id="tip_ph" class="td_tip" style="font-size: 15px">手机号格式不正确</span>
                         </td>
                     </tr>
                     <tr>

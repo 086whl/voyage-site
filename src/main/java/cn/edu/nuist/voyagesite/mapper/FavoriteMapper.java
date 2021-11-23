@@ -24,6 +24,8 @@ public interface FavoriteMapper {
     void removeMyroute(int rid, int uid);
     //收藏排行榜
     List<Route> favoriteRank();
+//    删除后更新收藏的总数
+    void updateTotalFav(@Param("rid") int rid);
 
 //    搜索收藏页
     List<Route> searchRoute(@Param("uid") int uid,@Param("word") String word);

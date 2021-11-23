@@ -35,7 +35,9 @@
                 let word = $("#search_input").val();
                 location.href = "searchRoute?uid=" + uid + "&word=" + word ;
             });
+
         });
+
     </script>
 
 </head>
@@ -94,7 +96,17 @@
                                     <h3 th:text="${route.rname}">上海直飞三亚5天4晚自由行(春节预售+亲子/蜜月/休闲游首选+豪华酒店任选+接送机)</h3>
                                 </a>
                                 <div class="price">网付价<em>￥</em><strong th:text="${route.price}">889</strong><em>起</em>
-                                    <a th:attr="href='removeMyroute?rid='+${route.rid}">删除</a>
+                                    <button onclick="delete1()"  >删除</button>
+                                    <script th:inline="javascript">
+                                        //    删除按钮
+                                        function delete1(){
+                                            if (confirm("要删除吗？")){
+                                                // alert([[${route.rid}]])
+                                                location.href= "removeMyroute?rid="+[[${route.rid}]];
+                                            //    th:attr="href='removeMyroute?rid='+${route.rid}"
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </div>
 

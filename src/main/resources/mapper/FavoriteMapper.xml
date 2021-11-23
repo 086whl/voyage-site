@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.nuist.voyagesite.mapper.FavoriteMapper">
-<!--    用户id查询route-->
+    <!--    用户id查询route-->
     <select id="findFavoriteByUId" resultType="route">
         select *
         from tab_route
@@ -10,9 +10,8 @@
             FROM tab_favorite
             WHERE uid = #{uid}
         )
-
     </select>
-<!--模糊搜索查询路线-->
+    <!--模糊搜索查询路线-->
     <select id="searchRoute" resultType="route">
         select *
         from tab_route
@@ -20,23 +19,32 @@
             SELECT rid
             FROM tab_favorite
             WHERE uid = #{uid}
-            ) and rname like concat('%',#{word},'%')
+        )
+          and rname like concat('%', #{word}, '%')
     </select>
-
+<!--添加收藏-->
     <insert id="addFavoriteByUId">
         INSERT INTO tab_favorite(rid, date, uid) VALUE (#{rid},#{date},#{uid})
     </insert>
-
+<!--判断是否收藏-->
     <select id="isExistFavorite" resultType="java.lang.Boolean">
         SELECT EXISTS(SELECT 1 FROM tab_favorite WHERE rid = #{rid} AND uid = #{uid})
     </select>
+<!--    删除收藏-->
     <delete id="removeMyroute">
         delete
         from tab_favorite
-        where rid = #{rid} and uid=#{uid}
+        where rid = #{rid}
+          and uid = #{uid};
     </delete>
-
+<!--    删除收藏对应的应更新route表中count字段-->
+    <update id="updateTotalFav">
+        update tab_route set count=count -1 where rid = #{rid};
+    </update>
+<!-- 收藏排行榜-->
     <select id="favoriteRank" resultType="cn.edu.nuist.voyagesite.domain.Route">
-        SELECT  * FROM tab_route ORDER BY count DESC LIMIT 8
+        SELECT *
+        FROM tab_route
+        ORDER BY count DESC LIMIT 8
     </select>
 </mapper>

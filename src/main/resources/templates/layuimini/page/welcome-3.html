@@ -9,6 +9,26 @@
     <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
     <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function (){
+            $.get("../../countAllUser",function (data){
+                $("#userAll1").html(data);
+                $("#userAll2").html(data);
+
+            });
+            $.get("../../countAllRoute",function (data){
+                $("#routeAll1").html(data);
+                $("#routeAll2").html(data);
+
+            });
+            $.get("../../countAllFavorite",function (data){
+                $("#favAll1").html(data);
+                $("#favAll2").html(data);
+
+            });
+        });
+    </script>
 </head>
 <style>
     .layui-top-box {
@@ -58,13 +78,14 @@
         height: 40px;
     }
 </style>
+
 <body>
 <h2 align="center">欢迎登陆后台管理系统</h2>
 <div class="layuimini-container">
     <div class="layuimini-main layui-top-box">
         <div class="layui-row layui-col-space10">
 
-            <div class="layui-col-md3">
+            <div class="layui-col-md4">
                 <div class="col-xs-6 col-md-3">
                     <div class="panel layui-bg-cyan">
                         <div class="panel-body">
@@ -73,8 +94,9 @@
                                 <h5>用户统计</h5>
                             </div>
                             <div class="panel-content">
-                                <h1 class="no-margins">1234</h1>
-                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234
+                                <h1 class="no-margins" id="userAll1">1234</h1>
+                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> <span
+                                        id="userAll2">1234</span>
                                 </div>
                                 <small>当前分类总记录数</small>
                             </div>
@@ -83,17 +105,18 @@
                 </div>
             </div>
 
-            <div class="layui-col-md3">
+            <div class="layui-col-md4">
                 <div class="col-xs-6 col-md-3">
                     <div class="panel layui-bg-blue">
                         <div class="panel-body">
                             <div class="panel-title">
                                 <span class="label pull-right layui-bg-cyan">实时</span>
-                                <h5>商品统计</h5>
+                                <h5>路线统计</h5>
                             </div>
                             <div class="panel-content">
-                                <h1 class="no-margins">1234</h1>
-                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234
+                                <h1 class="no-margins" id="routeAll1">1234</h1>
+                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> <span
+                                        id="routeAll2">1234</span>
                                 </div>
                                 <small>当前分类总记录数</small>
                             </div>
@@ -102,35 +125,37 @@
                 </div>
             </div>
 
-            <div class="layui-col-md3">
-                <div class="col-xs-6 col-md-3">
-                    <div class="panel layui-bg-green">
-                        <div class="panel-body">
-                            <div class="panel-title">
-                                <span class="label pull-right layui-bg-orange">实时</span>
-                                <h5>浏览统计</h5>
-                            </div>
-                            <div class="panel-content">
-                                <h1 class="no-margins">1234</h1>
-                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234
-                                </div>
-                                <small>当前分类总记录数</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
+            <!--            <div class="layui-col-md3">-->
+            <!--                <div class="col-xs-6 col-md-3">-->
+            <!--                    <div class="panel layui-bg-green">-->
+            <!--                        <div class="panel-body">-->
+            <!--                            <div class="panel-title">-->
+            <!--                                <span class="label pull-right layui-bg-orange">实时</span>-->
+            <!--                                <h5>浏览统计</h5>-->
+            <!--                            </div>-->
+            <!--                            <div class="panel-content">-->
+            <!--                                <h1 class="no-margins">1234</h1>-->
+            <!--                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234-->
+            <!--                                </div>-->
+            <!--                                <small>当前分类总记录数</small>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <div class="layui-col-md4">
                 <div class="col-xs-6 col-md-3">
                     <div class="panel layui-bg-orange">
                         <div class="panel-body">
                             <div class="panel-title">
                                 <span class="label pull-right layui-bg-green">实时</span>
-                                <h5>订单统计</h5>
+                                <h5>收藏统计</h5>
                             </div>
                             <div class="panel-content">
-                                <h1 class="no-margins">1234</h1>
-                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234
+                                <h1 class="no-margins" id="favAll1">1234</h1>
+                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i><span
+                                        id="favAll2">1234</span>
                                 </div>
                                 <small>当前分类总记录数</small>
                             </div>
@@ -140,7 +165,33 @@
             </div>
         </div>
     </div>
-    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<!--    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8">-->
+<!--        layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {-->
+<!--            let $ = layui.jquery,-->
+<!--                layer = layui.layer,-->
+<!--                miniAdmin = layui.miniAdmin,-->
+<!--                miniTongji = layui.miniTongji;-->
+
+<!--                $.get("countAllUser", function (data) {-->
+<!--                    alert(data);-->
+<!--                    $("#userAll1").html(data);-->
+<!--                    $("#userAll2").html(data);-->
+
+<!--                });-->
+<!--                $.get("countAllRoute", function (data) {-->
+<!--                    $("#routeAll1").html(data);-->
+<!--                    $("#routeAll2").html(data);-->
+
+<!--                });-->
+<!--                $.get("countAllFavorite", function (data) {-->
+<!--                    $("#favAll1").html(data);-->
+<!--                    $("#favAll2").html(data);-->
+
+<!--                });-->
+
+<!--        });-->
+
+<!--    </script>-->
 </div>
 </body>
 </html>

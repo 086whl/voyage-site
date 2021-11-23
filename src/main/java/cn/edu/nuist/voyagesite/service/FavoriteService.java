@@ -14,15 +14,24 @@ import java.util.List;
 public interface FavoriteService {
     //根据用户ID查询收藏列表
     List<Route> findFavoriteByUId(int uid);
-    //添加收藏列表
-    void addFavoriteByUid(int rid,String date,int uid);
-    //根据RID与UID查询记录是否存在
-    boolean isExistFavorite(int rid,int uid);
 
+    //添加收藏列表
+    void addFavoriteByUid(int rid, String date, int uid);
+
+    //根据RID与UID查询记录是否存在
+    boolean isExistFavorite(int rid, int uid);
+
+    //删除收藏路线
     void removeMyroute(int rid, int uid);
 
     //收藏排行榜
     List<Route> favoriteRank();
 
-    List<Route> searchRoute(int uid,String word);
+    /**
+     * 模糊搜索路线
+     * @param uid 用户id
+     * @param word 模糊查询的word
+     * @return 返回route集合
+     */
+    List<Route> searchRoute(int uid, String word);
 }

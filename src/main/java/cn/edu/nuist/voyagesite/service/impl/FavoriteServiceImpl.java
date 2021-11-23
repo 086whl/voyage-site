@@ -17,39 +17,47 @@ import java.util.List;
 public class FavoriteServiceImpl implements FavoriteService {
     @Autowired
     private FavoriteMapper favoriteMapper;
+
     //根据用户ID查询收藏列表
     @Override
 
     public List<Route> findFavoriteByUId(int uid) {
-        List<Route> allFavorite=favoriteMapper.findFavoriteByUId(uid);
+        List<Route> allFavorite = favoriteMapper.findFavoriteByUId(uid);
         return allFavorite;
     }
+
     //添加收藏列表
     @Override
-    public void addFavoriteByUid(int rid,String date,int uid) {
+    public void addFavoriteByUid(int rid, String date, int uid) {
         favoriteMapper.addFavoriteByUId(rid, date, uid);
     }
+
     //根据RID与UID查询记录是否存在
     @Override
     public boolean isExistFavorite(int rid, int uid) {
-        Boolean isExist=favoriteMapper.isExistFavorite(rid,uid);
+        Boolean isExist = favoriteMapper.isExistFavorite(rid, uid);
         return isExist;
     }
 
+    //删除收藏路线
     @Override
+
     public void removeMyroute(int rid, int uid) {
-        favoriteMapper.removeMyroute(rid,uid);
+        favoriteMapper.removeMyroute(rid, uid);
+        favoriteMapper.updateTotalFav(rid);
     }
 
+    //收藏路线排行榜
     @Override
     public List<Route> favoriteRank() {
-        List<Route> favoriteRankList=favoriteMapper.favoriteRank();
+        List<Route> favoriteRankList = favoriteMapper.favoriteRank();
         return favoriteRankList;
     }
 
+    //模糊搜索路线
     @Override
-    public List<Route> searchRoute(int uid,String word) {
-        List<Route> routes = favoriteMapper.searchRoute(uid,word);
+    public List<Route> searchRoute(int uid, String word) {
+        List<Route> routes = favoriteMapper.searchRoute(uid, word);
         return routes;
     }
 }

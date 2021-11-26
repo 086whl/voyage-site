@@ -1,5 +1,6 @@
 package cn.edu.nuist.voyagesite.mapper;
 
+import cn.edu.nuist.voyagesite.domain.DataSetPackage;
 import cn.edu.nuist.voyagesite.domain.PieDataPackage;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,5 +13,6 @@ import java.util.List;
  */
 @Mapper
 public interface ChartsMapper {
-    public List<PieDataPackage> pieData();
+    List<PieDataPackage> pieData();
+    List<DataSetPackage> dataSetData();
 }

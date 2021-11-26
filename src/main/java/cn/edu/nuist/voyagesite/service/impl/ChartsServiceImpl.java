@@ -1,7 +1,10 @@
 package cn.edu.nuist.voyagesite.service.impl;
 
+import cn.edu.nuist.voyagesite.domain.DataSetPackage;
 import cn.edu.nuist.voyagesite.domain.PieDataPackage;
+import cn.edu.nuist.voyagesite.mapper.ChartsMapper;
 import cn.edu.nuist.voyagesite.service.ChartsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +16,17 @@ import java.util.List;
  */
 @Service
 public class ChartsServiceImpl implements ChartsService {
-
+    @Autowired
+    private ChartsMapper chartsMapper;
     @Override
     public List<PieDataPackage> pieData() {
-        return null;
+        List<PieDataPackage> pieDataPackages = chartsMapper.pieData();
+        return pieDataPackages;
+    }
+
+    @Override
+    public List<DataSetPackage> dataSetData() {
+        List<DataSetPackage> dataSetPackages = chartsMapper.dataSetData();
+        return dataSetPackages;
     }
 }

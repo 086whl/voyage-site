@@ -163,79 +163,70 @@
          * 柱状图
          */
         var echartsDataset = echarts.init(document.getElementById('echarts-dataset'), 'walden');
-
-        var optionDataset = {
-            legend: {},
-            tooltip: {},
-            dataset: {
-                dimensions: ['product', '2015', '2016', '2017'],
-                source: [
-                    {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
-                    {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
-                    {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
-                    {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
+        $.get('/dataSetData',function (data){
+            var optionDataset = {
+                legend: {},
+                tooltip: {},
+                dataset: {
+                    dimensions: ['name', 'sum', 'favorite'],
+                    source: data
+                },
+                xAxis: {type: 'category'},
+                yAxis: {},
+                // Declare several bar series, each will be mapped
+                // to a column of dataset.source by default.
+                series: [
+                    {type: 'bar'},
+                    {type: 'bar'}
                 ]
-            },
-            xAxis: {type: 'category'},
-            yAxis: {},
-            // Declare several bar series, each will be mapped
-            // to a column of dataset.source by default.
-            series: [
-                {type: 'bar'},
-                {type: 'bar'},
-                {type: 'bar'}
-            ]
-        };
+            };
 
-        echartsDataset.setOption(optionDataset);
+            echartsDataset.setOption(optionDataset);
+
+        },'json')
 
 
         /**
          * 玫瑰图表
          */
         var echartsPies = echarts.init(document.getElementById('echarts-pies'), 'walden');
-        var optionPies = {
-            title: {
-                text: '类型总览',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '{a} <br/>{b} : {c} ({d}%)'
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                data: ['门票', '酒店', '香港车票', '出境游', '国内游','港澳游','抱团定制','全球自由行']
-            },
-            series: [
-                {
-                    name: '访问来源',
-                    type: 'pie',
-                    radius: '55%',
-                    center: ['50%', '60%'],
-                    roseType: 'radius',
-                    data: [
-                        {value: 335, name: '门票'},
-                        {value: 310, name: '酒店'},
-                        {value: 234, name: '香港车票'},
-                        {value: 135, name: '出境游'},
-                        {value: 23, name: '国内游'},
-                        {value: 435, name: '港澳游'},
-                        {value: 368, name: '抱团定制'},
-                        {value: 435, name: '全球自由行'}
-                    ],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+        $.get('/pieData',function (data){
+            var optionPies = {
+                title: {
+                    text: '类型总览',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data: ['门票', '酒店', '香港车票', '出境游', '国内游','港澳游','抱团定制','全球自由行']
+                },
+                series: [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['50%', '60%'],
+                        roseType: 'radius',
+                        data: data,
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
                         }
                     }
-                }
-            ]
-        };
-        echartsPies.setOption(optionPies);
+                ]
+            };
+            echartsPies.setOption(optionPies);
+        },'json')
+
+
 
 
 

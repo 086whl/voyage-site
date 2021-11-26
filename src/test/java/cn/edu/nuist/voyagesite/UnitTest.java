@@ -6,11 +6,7 @@ import cn.edu.nuist.voyagesite.domain.Route;
 import cn.edu.nuist.voyagesite.domain.RouteDetail;
 import cn.edu.nuist.voyagesite.mapper.CategoryMapper;
 import cn.edu.nuist.voyagesite.mapper.RouteMapper;
-import cn.edu.nuist.voyagesite.service.PageService;
-import cn.edu.nuist.voyagesite.service.impl.FavoriteServiceImpl;
-import cn.edu.nuist.voyagesite.service.impl.PageServiceImpl;
-import cn.edu.nuist.voyagesite.service.impl.RouteServiceImpl;
-import cn.edu.nuist.voyagesite.service.impl.SearchServiceImpl;
+import cn.edu.nuist.voyagesite.service.impl.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -69,4 +65,5 @@ public class UnitTest {
     public  void routeDelete(){
         routeMapper.deleteByRid(1);
     }
+
 }

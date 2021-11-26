@@ -29,4 +29,12 @@ public class FindDataController {
 
         return countNumber.countAllRoute();
     }
+
+    //后端饼图数据
+    @RequestMapping("pieData")
+    public String pieData(){
+
+
+        return null;
+    }
 }

@@ -10,6 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!--    &lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
     <script src="js/jquery-3.3.1.js"></script>
@@ -23,7 +24,7 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <!--    <![endif]&ndash;&gt;-->
-  </head>
+</head>
 <body>
 
 <!--引入头部-->
@@ -31,37 +32,67 @@
 <!-- 首页导航 -->
 <div id="menu"></div>
 <!-- banner start-->
-<section id="banner">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="images/banner_1.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="images/banner_2.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="images/banner_3.jpg" alt="">
+<!--<section id="banner">-->
+
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="carousel slide" id="carousel-866254" data-ride="carousel" data-interval="2000">
+                    <ol class="carousel-indicators">
+                        <li data-slide-to="0" data-target="#carousel-866254">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-866254" class="active">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-866254">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img alt="" src="images/banner_1.jpg"/>
+                            <div class="carousel-caption">
+                                <h4>
+                                    雪山、湖水和新鲜的空气
+                                </h4>
+                                <p>
+                                    湖面平静的像一面大平面镜，没有一丝波澜。
+                                </p>
+                                <p>微风吹拂下，湖水显得格外清澈。我伸出手指沾了沾似翠镜的湖面，丝丝凉意由指尖传递到心头，一扫阳光带来的热意，让人顿感心旷神怡。</p>
+                            </div>
+                        </div>
+                        <div class="item active">
+                            <img alt="" src="images/banner_2.jpg"/>
+                            <div class="carousel-caption">
+                                <h4>
+                                    夕阳寻梦待落幕，枫情凝露落叶霜。
+                                </h4>
+                                <p>
+                                    那时我们还年轻。穿过残垣断壁苍松古柏，我们来到山崖上。沐浴着夕阳，心静如水，我们向云雾飘荡的远方眺望。其实啥也看不到，生活的悲欢离合远在地平线以外，而眺望是一种青春的姿态。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="" src="images/banner_3.jpg"/>
+                            <div class="carousel-caption">
+                                <h4>
+                                    　　吸着新鲜晨气，观看天上的白云
+                                </h4>
+                                <p>　　空气清新的像是被洗过一般，没有一点混浊，阳光下也看不到一丝尘埃。</p>
+                                <p>　　那弥漫的气息似乎能让人闻到一股香甜的味道，细细微风听起来都欢快了很多。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-866254" data-slide="prev"><span
+                            class="glyphicon glyphicon-chevron-left"></span></a>
+                    <a class="right carousel-control"
+                       href="#carousel-866254"
+                       data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
             </div>
         </div>
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-</section>
+<!--</section>-->
 <!-- banner end-->
 <!-- 缩略图-->
 <div class="container">
@@ -184,6 +215,6 @@
 <!--导入底部-->
 <footer id="footer"></footer>
 <!--尾部-->
-</script>
+
 </body>
 </html>

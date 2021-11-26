@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.edu.nuist.voyagesite.mapper.AdminMapper">
+<mapper namespace="cn.edu.nuist.voyagesite.mapper.ChartsMapper">
     <select id="pieData" resultType="cn.edu.nuist.voyagesite.domain.PieDataPackage">
         SELECT
             c.cname AS 'name',
                 count( r.cid ) AS 'value'
+        FROM
+            tab_route AS r,
+            tab_category AS c
+        WHERE
+            r.cid = c.cid
+        GROUP BY
+            c.cname
+    </select>
+    <select id="dataSetData" resultType="cn.edu.nuist.voyagesite.domain.DataSetPackage">
+        SELECT
+            c.cname AS 'name',
+                count( r.cid ) AS 'sum',
+                count( CASE WHEN r.count != 0 THEN '1' END ) AS 'favorite'
         FROM
             tab_route AS r,
             tab_category AS c

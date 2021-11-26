@@ -1,5 +1,6 @@
 package cn.edu.nuist.voyagesite.service;
 
+import cn.edu.nuist.voyagesite.domain.DataSetPackage;
 import cn.edu.nuist.voyagesite.domain.PieDataPackage;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,8 @@ import java.util.List;
 @Service
 public interface ChartsService {
     //饼图数据
-    public List<PieDataPackage> pieData();
+    List<PieDataPackage> pieData();
+    //柱状图数据
+    List<DataSetPackage> dataSetData();
+
 }

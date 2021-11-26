@@ -10,25 +10,8 @@
     <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(function (){
-            $.get("../../countAllUser",function (data){
-                $("#userAll1").html(data);
-                $("#userAll2").html(data);
-
-            });
-            $.get("../../countAllRoute",function (data){
-                $("#routeAll1").html(data);
-                $("#routeAll2").html(data);
-
-            });
-            $.get("../../countAllFavorite",function (data){
-                $("#favAll1").html(data);
-                $("#favAll2").html(data);
-
-            });
-        });
-    </script>
+    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 </head>
 <style>
     .layui-top-box {
@@ -78,7 +61,6 @@
         height: 40px;
     }
 </style>
-
 <body>
 <h2 align="center">欢迎登陆后台管理系统</h2>
 <div class="layuimini-container">
@@ -104,7 +86,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="layui-col-md4">
                 <div class="col-xs-6 col-md-3">
                     <div class="panel layui-bg-blue">
@@ -124,26 +105,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--            <div class="layui-col-md3">-->
-            <!--                <div class="col-xs-6 col-md-3">-->
-            <!--                    <div class="panel layui-bg-green">-->
-            <!--                        <div class="panel-body">-->
-            <!--                            <div class="panel-title">-->
-            <!--                                <span class="label pull-right layui-bg-orange">实时</span>-->
-            <!--                                <h5>浏览统计</h5>-->
-            <!--                            </div>-->
-            <!--                            <div class="panel-content">-->
-            <!--                                <h1 class="no-margins">1234</h1>-->
-            <!--                                <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i> 1234-->
-            <!--                                </div>-->
-            <!--                                <small>当前分类总记录数</small>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
             <div class="layui-col-md4">
                 <div class="col-xs-6 col-md-3">
                     <div class="panel layui-bg-orange">
@@ -163,35 +124,129 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-xs12 layui-col-md6">
+                    <div id="echarts-dataset" style="background-color:#ffffff;min-height:300px;padding: 10px"></div>
+                </div>
+                <div class="layui-col-xs12 layui-col-md6">
+                    <div id="echarts-pies" style="background-color:#ffffff;min-height:400px;padding: 10px"></div>
+                </div>
+            </div>
         </div>
     </div>
-<!--    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8">-->
-<!--        layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {-->
-<!--            let $ = layui.jquery,-->
-<!--                layer = layui.layer,-->
-<!--                miniAdmin = layui.miniAdmin,-->
-<!--                miniTongji = layui.miniTongji;-->
-
-<!--                $.get("countAllUser", function (data) {-->
-<!--                    alert(data);-->
-<!--                    $("#userAll1").html(data);-->
-<!--                    $("#userAll2").html(data);-->
-
-<!--                });-->
-<!--                $.get("countAllRoute", function (data) {-->
-<!--                    $("#routeAll1").html(data);-->
-<!--                    $("#routeAll2").html(data);-->
-
-<!--                });-->
-<!--                $.get("countAllFavorite", function (data) {-->
-<!--                    $("#favAll1").html(data);-->
-<!--                    $("#favAll2").html(data);-->
-
-<!--                });-->
-
-<!--        });-->
-
-<!--    </script>-->
 </div>
+<script>
+    $(function (){
+        $.get("../../countAllUser",function (data){
+            $("#userAll1").html(data);
+            $("#userAll2").html(data);
+
+        });
+        $.get("../../countAllRoute",function (data){
+            $("#routeAll1").html(data);
+            $("#routeAll2").html(data);
+
+        });
+        $.get("../../countAllFavorite",function (data){
+            $("#favAll1").html(data);
+            $("#favAll2").html(data);
+
+        });
+    });
+
+    layui.use(['layer', 'echarts'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            echarts = layui.echarts;
+
+        /**
+         * 柱状图
+         */
+        var echartsDataset = echarts.init(document.getElementById('echarts-dataset'), 'walden');
+
+        var optionDataset = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                dimensions: ['product', '2015', '2016', '2017'],
+                source: [
+                    {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
+                    {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
+                    {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
+                    {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {},
+            // Declare several bar series, each will be mapped
+            // to a column of dataset.source by default.
+            series: [
+                {type: 'bar'},
+                {type: 'bar'},
+                {type: 'bar'}
+            ]
+        };
+
+        echartsDataset.setOption(optionDataset);
+
+
+        /**
+         * 玫瑰图表
+         */
+        var echartsPies = echarts.init(document.getElementById('echarts-pies'), 'walden');
+        var optionPies = {
+            title: {
+                text: '类型总览',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['门票', '酒店', '香港车票', '出境游', '国内游','港澳游','抱团定制','全球自由行']
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    roseType: 'radius',
+                    data: [
+                        {value: 335, name: '门票'},
+                        {value: 310, name: '酒店'},
+                        {value: 234, name: '香港车票'},
+                        {value: 135, name: '出境游'},
+                        {value: 23, name: '国内游'},
+                        {value: 435, name: '港澳游'},
+                        {value: 368, name: '抱团定制'},
+                        {value: 435, name: '全球自由行'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        echartsPies.setOption(optionPies);
+
+
+
+
+        // echarts 窗口缩放自适应
+        window.onresize = function () {
+            echartsRecords.resize();
+        }
+
+    });
+
+</script>
 </body>
 </html>

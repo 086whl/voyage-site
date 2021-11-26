@@ -12,18 +12,30 @@ public class FindDataController {
     @Qualifier("countNumberServiceImpl")
     CountNumberService countNumber;
 
+    /**
+     * 计数用户总数
+     * @return 返回总数
+     */
     @RequestMapping("countAllUser")
     public int countAllRoute() {
 
         return countNumber.countAllUser();
     }
 
+    /**
+     * 计数收藏总数
+     * @return 返回总数
+     */
     @RequestMapping("countAllFavorite")
     public int countAllFavorite() {
 
         return countNumber.countAllFavorite();
     }
 
+    /**
+     * 计数路线总数
+     * @return 返回总数
+     */
     @RequestMapping("countAllRoute")
     public int countAllUser() {
 
@@ -33,8 +45,6 @@ public class FindDataController {
     //后端饼图数据
     @RequestMapping("pieData")
     public String pieData(){
-
-
         return null;
     }
 }

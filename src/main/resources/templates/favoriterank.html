@@ -20,7 +20,7 @@
             <li>
                 <span class="num one">1</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(0).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(0).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(0).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(0).rid}}" th:text="${favoriteRankList.get(0).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(0).price}" class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(0).count}+'次'" class="shouchang">已收藏450次</span>
@@ -29,7 +29,7 @@
             <li>
                 <span class="num two">2</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(1).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(1).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(1).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(1).rid}}" th:text="${favoriteRankList.get(1).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(1).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(1).count}+'次'" class="shouchang">已收藏450次</span>
@@ -38,7 +38,7 @@
             <li>
                 <span class="num">3</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(2).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(2).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(2).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(2).rid}}" th:text="${favoriteRankList.get(2).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(2).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(2).count}+'次'" class="shouchang">已收藏450次</span>
@@ -47,7 +47,7 @@
             <li>
                 <span class="num">4</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(3).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(3).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(3).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(3).rid}}" th:text="${favoriteRankList.get(3).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(3).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(3).count}+'次'" class="shouchang">已收藏450次</span>
@@ -56,7 +56,7 @@
             <li>
                 <span class="num">5</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(4).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(4).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(4).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(4).rid}}" th:text="${favoriteRankList.get(4).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(4).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(4).count}+'次'" class="shouchang">已收藏450次</span>
@@ -65,7 +65,7 @@
             <li>
                 <span class="num">6</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(5).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(5).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(5).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(5).rid}}" th:text="${favoriteRankList.get(5).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(5).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(5).count}+'次'" class="shouchang">已收藏450次</span>
@@ -74,7 +74,7 @@
             <li>
                 <span class="num">7</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(6).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(6).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(6).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(6).rid}}" th:text="${favoriteRankList.get(6).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(6).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(6).count}+'次'" class="shouchang">已收藏450次</span>
@@ -83,7 +83,7 @@
             <li>
                 <span class="num">8</span>
                 <a th:href="@{'route_detail?rid='+${favoriteRankList.get(7).rid}}" href="route_detail.html"><img th:attr="src=${favoriteRankList.get(7).rimage}" src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a th:text="${favoriteRankList.get(7).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                <h4><a th:href="@{'route_detail?rid='+${favoriteRankList.get(7).rid}}" th:text="${favoriteRankList.get(7).rname}" href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b th:text="${favoriteRankList.get(7).price}"  class="price">&yen;<span>899</span>起</b>
                     <span th:text="'已收藏'+${favoriteRankList.get(7).count}+'次'" class="shouchang">已收藏450次</span>
